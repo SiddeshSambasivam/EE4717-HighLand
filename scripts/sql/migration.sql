@@ -6,10 +6,10 @@ INSERT INTO users (email, phone, name, address) VALUES
 INSERT INTO credentials (user_id, email, password) VALUES
     (1, 'siddesh.test@test.com', 'test123');
 
-INSERT INTO products (title, price, description, items_in_stock) VALUES
-    ('Test Product 1', 100.00, 'This is a test product', 10),
-    ('Test Product 2', 200.00, 'This is a test product', 20),
-    ('Test Product 3', 300.00, 'This is a test product', 30);
+INSERT INTO products (title, price, description, image, items_in_stock, rating, category, color, size, tags) VALUES
+    ('Test Product 1', 100.00, 'This is a test product', '/assets/test_image.svg', 10, 4.5, 'test', 'test', 'test', 'test'),
+    ('Test Product 2', 200.00, 'This is a test product', '/assets/test_image.svg', 20, 4.5, 'test', 'test', 'test', 'test'),
+    ('Test Product 3', 300.00, 'This is a test product', '/assets/test_image.svg', 30, 4.5, 'test', 'test', 'test', 'test');
 
 INSERT INTO product_images (product_id, image_id, image_url) VALUES
     (1, 1, '/assets/test_image.svg'),    

@@ -23,8 +23,18 @@ CREATE TABLE products (
     product_id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
     price DECIMAL(10,2) NOT NULL,
-    description VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL,    
+    image VARCHAR(255) NOT NULL,
     items_in_stock INT NOT NULL,
+    category VARCHAR(255) NOT NULL,
+    
+    rating DECIMAL(2,1) NOT NULL,            
+    color VARCHAR(255) NOT NULL,
+    size VARCHAR(255) NOT NULL,
+
+    -- For product tags such as "new", "sale", "best seller"
+    tags VARCHAR(255) NOT NULL,
+
     PRIMARY KEY (product_id)
 );
 
