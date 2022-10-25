@@ -45,6 +45,10 @@ height: 0;
 	color:#fff;
 }
 
+.last {
+    margin-left: auto;
+  }
+
 #wrapper {
     background-color: #d8d8d8;
     width: 80%;
@@ -185,4 +189,10 @@ footer {
     background-image: url("images/cart.png");
     background-repeat: no-repeat;
     background-position: 5px 5px 5px 5px;
-  }
+}
+
+
+form{    
+    width: 50%;
+    margin-left : 25%
+}
