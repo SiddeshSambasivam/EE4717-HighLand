@@ -16,11 +16,11 @@ if (isset($_POST['userid']) && isset($_POST['password']))
   }
 */
 $password = md5($password);
-  $query = 'select * from users '
-           ."where username='$userid' "
-           ." and password='$password'";
+$query = 'select * from users '
+          ."where username='$userid' "
+          ." and password='$password'";
 // echo "<br>" .$query. "<br>";
-  $result = $dbcnx->query($query);
+$result = $dbcnx->query($query);
   if ($result->num_rows >0 )
   {
     // if they are in the database register the user id
@@ -30,10 +30,10 @@ $password = md5($password);
 }
 ?>
 <html>
-<link href="horizontal-menu.css" rel="stylesheet">
+<link href="css-stylesheet.css" rel="stylesheet">
 <div id=wrapper>
 <header>
-	<a href="index.html">
+	<a href="index.php">
     <img src="logo.gif" alt= "HighLand" class="center" height="300" width="300">
 	</a>
 </header>
@@ -45,7 +45,7 @@ $password = md5($password);
     {
       echo 'You are logged in as: '.$_SESSION['valid_user'].' <br />';
       echo '<a href="logout.php">Log out</a><br />';
-      echo '<a href="index.html" class="center">Back to shopping</a>';
+      echo '<a href="index.php" class="center">Back to shopping</a>';
     }
     else
     {
@@ -61,7 +61,7 @@ $password = md5($password);
       }
 
       // Provide form to log in
-      echo '<div align="center"><form method="post" action="authmain.php">';
+      echo '<div align="center"><form method="post" action="authmain.php" class="center">';
       echo '<table>';
       echo '<tr><td>Username:</td>';
       echo '<td><input type="text" name="userid"></td></tr>';

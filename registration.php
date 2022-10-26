@@ -30,7 +30,7 @@ $password = md5($password);
 }
 ?>
 <html>
-<link href="horizontal-menu.css" rel="stylesheet">
+<link href="css-stylesheet.css" rel="stylesheet">
 <div id=wrapper>
 <header>
 	<a href="index.html">
