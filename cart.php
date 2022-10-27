@@ -5,12 +5,9 @@ session_start();
 if (!isset($_SESSION['cart'])){
 	$_SESSION['cart'] = array();
 }
-if (isset($_GET['empty'])) {
-	unset($_SESSION['cart']);
-	unset($_SESSION['price']);
-	header('location: ' . $_SERVER['PHP_SELF']);
-	exit();
-}
+
+
+
 ?>
 
 <html>
@@ -22,7 +19,20 @@ if (isset($_GET['empty'])) {
 	</a>
 </header>
 <body>
+<?php
+if (isset($_GET['checkedout']))
+{
+	if (count($_SESSION['cart'])>1) 
+	{
+	echo "<h2 class='center' style='text-align:center'>Thank You for shopping with us!<br><br> Your items will arrive shortly!<br> Order Summary</h2>";
+	}
 
+	else{
+	echo "<h2 class='center' style='text-align:center'>Your cart is empty!<br><br></h2>";
+	}
+
+}
+?>
 <table border="0" style="margin: 0px auto;">
 	<thead>
 	<tr>
@@ -65,10 +75,19 @@ if (!isset($_SESSION['valid_user']))
 }
 if (isset($_SESSION['valid_user']))
 {
+	if(!isset($_GET['checkedout'])){
 
-	echo "<p><a href='". $_SERVER['PHP_SELF']."?empty=1' class='center' style='text-align: center;'>Checkout now!</a></p>";
+	
+	echo "<p><a href='". $_SERVER['PHP_SELF']."?checkedout=1&empty=1' class='center' style='text-align: center;'>Checkout now!</a></p>";
 
+	}
+}
 
+if (isset($_GET['empty'])) {
+	unset($_SESSION['cart']);
+	unset($_SESSION['price']);
+	// header('location: ' . $_SERVER['PHP_SELF']);
+	// exit();
 }
 
 ?>
