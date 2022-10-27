@@ -22,13 +22,40 @@ if (!isset($_SESSION['cart'])){
 <?php
 if (isset($_GET['checkedout']))
 {
-	if (count($_SESSION['cart'])>1) 
+	if (count($_SESSION['cart'])>0) 
 	{
-	echo "<h2 class='center' style='text-align:center'>Thank You for shopping with us!<br><br> Your items will arrive shortly!<br> Order Summary</h2>";
+	echo "<h2 class='center' style='text-align:center'>Thank You for shopping with us!<br><br> Your items will arrive shortly!</h2>";
+
+
+	
+	// $to      = 'f32ee@localhost';
+	// $subject = 'Order Summary';
+	// $message = 'Items Ordered';
+	// 	$total = 0;
+
+	// 	for ($i=0; $i < count($_SESSION['cart']); $i++){
+	// 		echo "<tr style='text-align: center; '>";
+	// 		echo "<td style='text-align: center; '>" .$_SESSION['cart'][$i]. "</td>";
+	// 		echo "<td align='right' style='text-align: center; '>$";
+	// 		echo $_SESSION['price'][$i]. "</td>";
+	// 		echo "</tr >";
+	// 		$total = $total + $_SESSION['price'][$i];
+	// 	}
+	// $headers = 'From: f32ee@localhost' . "\r\n" .
+	// 	'Reply-To: f32ee@localhost' . "\r\n" .
+	// 	'X-Mailer: PHP/' . phpversion();
+
+	// mail($to, $subject, $message, $headers,'-ff32ee@localhost');
+	echo "<h2 class='center' style='text-align:center'> Your order summary has been sent to your email address <br><br> Order Summary</h2>";
+
+	
+
+
+
 	}
 
 	else{
-	echo "<h2 class='center' style='text-align:center'>Your cart is empty!<br><br></h2>";
+	echo "<h2 class='center' style='text-align:center'>Checkout Failed!<br>Your cart is empty!<br><br></h2>";
 	}
 
 }
@@ -67,7 +94,7 @@ for ($i=0; $i < count($_SESSION['cart']); $i++){
 <?php
 if (!isset($_SESSION['valid_user']))
 {
-
+	echo "<p><a href='". $_SERVER['PHP_SELF']."?emptyrefresh=1' class='center' style='text-align: center;'>Clear Cart</a></p><br>";
 	echo "<p><a href='". $_SERVER['PHP_SELF']."?empty=1' class='center' style='text-align: center;'>Checkout as guest</a></p>";
 	echo "<p><a href='registration.php' class='center' style='text-align: center;'>Become a member now!</a></p>";
 
@@ -78,8 +105,8 @@ if (isset($_SESSION['valid_user']))
 	if(!isset($_GET['checkedout'])){
 
 	
-	echo "<p><a href='". $_SERVER['PHP_SELF']."?checkedout=1&empty=1' class='center' style='text-align: center;'>Checkout now!</a></p>";
-
+	echo "<p><a href='". $_SERVER['PHP_SELF']."?checkedout=1&empty=1' class='center' style='text-align: center;'>Checkout now!</a></p><br>";
+	echo "<p><a href='". $_SERVER['PHP_SELF']."?emptyrefresh=1' class='center' style='text-align: center;'>Clear Cart</a></p>";
 	}
 }
 
@@ -90,6 +117,12 @@ if (isset($_GET['empty'])) {
 	// exit();
 }
 
+if (isset($_GET['emptyrefresh'])) {
+	unset($_SESSION['cart']);
+	unset($_SESSION['price']);
+	header('location: ' . $_SERVER['PHP_SELF']);
+	exit();
+}
 ?>
 <footer>
 	<h1>About Us</h1>
