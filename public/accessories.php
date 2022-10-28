@@ -10,7 +10,7 @@
     <script src="./js/components.js"></script>
 </head>
 <body>
-    <navbar-head />
-    <footer-foot />
+    <navbar-head></navbar-head>
+    <footer-foot></footer-foot>
 </body>
 </html>

@@ -10,127 +10,14 @@
     <script src="./js/components.js"></script>
 </head>
 <body>
-    <navbar-head /> 
+    <navbar-head></navbar-head>
     <section class="hero set-bg" id="hero">        
     </section>
-    <section class="products-container" id="products">        
-        <div class="product__card">
-            <img class="product__card_img" src="../assets/product-1.jpg" alt="product image">
-            <div class="product__info">
-                <h4>Product Name</h4>                
-                <div class="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </div>
-                <h3>$100</h3>
-            </div>
-        </div>    
-        <div class="product__card">
-            <img class="product__card_img" src="../assets/product-1.jpg" alt="product image">
-            <div class="product__info">
-                <h4>Product Name</h4>                
-                <div class="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </div>
-                <h3>$100</h3>
-            </div>
-        </div>    
-        <div class="product__card">
-            <img class="product__card_img" src="../assets/product-1.jpg" alt="product image">
-            <div class="product__info">
-                <h4>Product Name</h4>                
-                <div class="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </div>
-                <h3>$100</h3>
-            </div>
-        </div>    
-        <div class="product__card">
-            <img class="product__card_img" src="../assets/product-1.jpg" alt="product image">
-            <div class="product__info">
-                <h4>Product Name</h4>                
-                <div class="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </div>
-                <h3>$100</h3>
-            </div>
-        </div>    
-        <div class="product__card">
-            <img class="product__card_img" src="../assets/product-1.jpg" alt="product image">
-            <div class="product__info">
-                <h4>Product Name</h4>                
-                <div class="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </div>
-                <h3>$100</h3>
-            </div>
-        </div>    
-
-        <div class="product__card">
-            <img class="product__card_img" src="../assets/product-1.jpg" alt="product image">
-            <div class="product__info">
-                <h4>Product Name</h4>                
-                <div class="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </div>
-                <h3>$100</h3>
-            </div>
-        </div>    
-        <div class="product__card">
-            <img class="product__card_img" src="../assets/product-1.jpg" alt="product image">
-            <div class="product__info">
-                <h4>Product Name</h4>                
-                <div class="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </div>
-                <h3>$100</h3>
-            </div>
-        </div>    
-        <div class="product__card">
-            <img class="product__card_img" src="../assets/product-1.jpg" alt="product image">
-            <div class="product__info">
-                <h4>Product Name</h4>                
-                <div class="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </div>
-                <h3>$100</h3>
-            </div>
-        </div>    
-        
+    <section class="products-container" id="products">   
+        <product-card product_name="Multi-pocker Chest Bag" product_price="43.48" product_image="../assets/product-1.jpg" /></product-card>
+        <product-card product_name="Multi-pocker Chest Bag" product_price="43.48" product_image="../assets/product-1.jpg" /></product-card>
     </section>
-
     <br>
-    <footer-foot/>
+    <footer-foot></footer-foot>
 </body>
 </html>

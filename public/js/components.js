@@ -73,5 +73,33 @@ class Footer extends HTMLElement {
     }
 }
 
-customElements.define("navbar-head", Navbar);
+class ProductCard extends HTMLElement {
+
+    connectedCallback() {
+
+        const product_name = this.getAttribute('product_name');
+        const product_price = this.getAttribute('product_price');
+        const product_image = this.getAttribute('product_image');
+
+        this.innerHTML = `
+            <div class="product__card">
+                <img class="product__card_img" src="${product_image}" alt="product image">
+                <div class="product__info">
+                    <h4>${product_name}</h4>                
+                    <div class="rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
+                    <h3>$${product_price}</h3>
+                </div>
+            </div>            
+        `
+    }
+}
+
 customElements.define("footer-foot", Footer);
+customElements.define("product-card", ProductCard);
+customElements.define("navbar-head", Navbar);

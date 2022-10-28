@@ -10,7 +10,14 @@
     <script src="./js/components.js"></script>
 </head>
 <body>
-    <navbar-head />
-    <footer-foot />
+    <navbar-head></navbar-head>
+    <div class="products-container">
+        <div class="query-panel">
+            input
+
+        </div>
+        <div class="products"></div>
+    </div>
+    <footer-foot></footer-foot>
 </body>
 </html>
