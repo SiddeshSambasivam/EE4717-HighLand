@@ -44,6 +44,7 @@ body {
     display: flex;
     flex-direction: column;
     min-width: 100%;
+    background-color: var(--white);
 }
 
 .header__top {
@@ -57,7 +58,7 @@ body {
 
 .header__top_left_info {
     color: var(--white);
-    font-size: 0.9rem;
+    font-size: 1rem;
     align-self: center;
 }
 
@@ -71,7 +72,7 @@ body {
 
     color: var(--white);
 
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
@@ -120,6 +121,7 @@ body {
 }
 
 .header__bottom nav ul li {
+    font-size: 1rem;
     display: inline-block;
     padding: 0px 20px;
 }
@@ -279,4 +281,19 @@ body {
 .product__info h4 {
     font-size: 1rem;
     font-weight: 500;
+}
+
+/* Listings Page */
+
+.main-container {
+    padding: 0.5rem;
+    padding-inline: 18%;
+    display: flex;
+    padding-top: 30px;
+}
+
+.listings-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 }

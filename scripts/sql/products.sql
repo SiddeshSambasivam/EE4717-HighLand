@@ -1,7 +1,7 @@
 use HighLand;
 
 INSERT INTO products (title, price, description, image, items_in_stock, rating, category, color, size, tags) VALUES 
-    ("Two-toned Leather Sneaker", 59.99, "This stylish sneaker has a two-tone upper and leather lining for a look that's perfect for any outfit. ", "../assets/product_1.jpg", 100, 5, "shoes", "brown,blue", "6,7,8,9", "men")
+    ("Two-toned Leather Sneaker", 59.99, "This stylish sneaker has a two-tone upper and leather lining for a look that's perfect for any outfit. ", "../assets/product_1.jpg", 100, 5, "shoes", "brown,blue", "6,7,8,9", "men"),
     ("Pique Biker Jacket", 69.99, "A biker leather jacket with multiple pockets thats boudn to leave an impression.", "../assets/product_2.jpg", 100, 4, "clothing", "brown", "S,M,L", "men"),
     ("Black Low-Cut Sneaker",49.99,"This black sneaker is a staple in every fashionista wardrobe that complements all outfits.","../assets/product_3.jpg",100,4.2 ,"shoes","6,7,8,9,10","black","men,women"),
     ("Khaki Distressed Pullover",54.99,"Complete any outfit with this pullover thats sure to keep you warm in the winter while looking stylish.","../assets/product_4.jpg",100 ,4.4 ,"top","S,M,L","brown","men"),
@@ -32,11 +32,4 @@ INSERT INTO products (title, price, description, image, items_in_stock, rating, 
     ("Stripped Graphic Shirt",19.99,"Embrace your youthful self with this shirt.","../assets/product_27.jpg",100 ,3.4 ,"top","S,M,L","white,brown","men"),
     ("Oversized Stripped Long-Sleeved Oxford Shirt",29.90,"Stay fashionable with this shirt made with premium 100% Merino Wool sourced from the highest grade Merino sheeps","../assets/product_28.jpg",40,3.8,"top","white,red","S,M,L","men"),
     ("Full Length Cotton Dress",39.90,"Be the center of attention with this orange dress made with 100% natural cotton from a sustainable source","../assets/product_29.jpg",50,3.9,"top","orange","S,M,L","women"),
-    ("Oversized Long-Sleeved Wool Shirt",32.90,"Stay warm and fashionable with this shirt made with premium 100% Merino Wool sourced from the highest grade Merino sheeps","../assets/product_30.jpg",40,3.8,"top","red","S,M,L","men"),
-    -- ("",,"","../assets/.jpg",,,"","","",""),
-    -- ("",,"","../assets/.jpg",,,"","","",""),
-    -- ("",,"","../assets/.jpg",,,"","","",""),
-    -- ("",,"","../assets/.jpg",,,"","","",""),
-    -- ("",,"","../assets/.jpg",,,"","","",""),
-    
-    -- (),
+    ("Woolen Bag",32.90,"Stay warm and fashionable with this bag made with premium 100% Merino Wool sourced from the highest grade Merino sheeps","../assets/product_30.jpg",40,3.8,"accessory","red","S,M,L","men");
