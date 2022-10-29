@@ -10,7 +10,7 @@ class Navbar extends HTMLElement {
                         </p>
                     </div>
                     <div class="header__top_right_cta">
-                        <a href="./signup.php">Sign up</a>
+                        <a href="./login.php">Sign up</a>
                         <a href="#">faqs</a>
                     </div>
                 </div>

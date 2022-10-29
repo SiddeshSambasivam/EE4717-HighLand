@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HighLand - Clothing</title>
+    <title>HighLand - Sign In</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/auth.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -12,7 +12,7 @@
     <script src="./js/components.js"></script>   
     <?php
         session_start();
-
+    
         function handleSignIn(){
             include("../src/db_connect.php");
     
@@ -41,10 +41,10 @@
                     $_SESSION['phone'] = $row['phone'];
                     $_SESSION['address'] = $row['address'];
 
-                    unset($_SESSION['error']);
+                    unset($_SESSION['login_error']);
                 }    
                 else{                    
-                    $_SESSION['error'] = "Invalid email or password";
+                    $_SESSION['login_error'] = "Invalid email or password";
                     unset($_SESSION['user_id']);       
                 }    
             }        
@@ -52,9 +52,58 @@
             $conn->close();
                         
         }
+
+        function handleSignUp(){
+            include("../src/db_connect.php");
+            
+            if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['address'])){
+
+                $email = $_POST['email'];
+                $query = "SELECT * from `credentials` WHERE `email`='$email'";
+                $result = $conn->query($query);
+
+                if($result->num_rows > 0){
+                    $_SESSION['signup_error'] = "Email already exists";
+                    unset($_SESSION['user_id']);
+                    return;
+                }
+
+                $password = $_POST['password'];
+                $name = $_POST['name'];
+                $phone = $_POST['phone'];
+                $address = $_POST['address'];
+
+                $password = md5($password);
+
+                $query = "INSERT INTO `users` (`name`, `email`, `phone`, `address`) VALUES ('$name', '$email', '$phone', '$address')";
+                $result = $conn->query($query);
+                $uid = $conn->insert_id;
+
+                $query = "INSERT INTO `credentials` (`user_id`, `email`, `password`) VALUES ('$uid', '$email', '$password')";
+                $result = $conn->query($query);
+
+                $_SESSION['user_id'] = $uid;
+                $_SESSION['email'] = $email;
+
+                $_SESSION['name'] = $name;
+                $_SESSION['phone'] = $phone;
+                $_SESSION['address'] = $address;
+
+                unset($_SESSION['signup_error']);
+                
+                header("Location: login.php");
+
+            }else{
+                $_SESSION['signup_error'] = "Please fill all the fields";
+                unset($_SESSION['user_id']);
+            }
+
+        }
         
         if (isset($_POST['signin'])){
             handleSignIn();
+        } elseif (isset($_POST['signup'])){
+            handleSignUp();
         }
 
     ?>
@@ -84,15 +133,18 @@
                 echo '
                 <div class="container" id="container">
                     <div class="form-container sign-up-container">
-                        <form method="post" action="../src/signup.php">
+                        <form method="post" action="./login.php">
                             <h1 class="headings-1">Create Account</h1>                
-                            <input type="text" name="name" placeholder="Name" />
-                            <input type="email" name="email" placeholder="Email" />
-                            <input type="password" name="password" placeholder="Password" />
+                            <input required type="text" name="name" placeholder="Name" />
+                            <input required type="email" name="email" placeholder="Email" />
+                            <input type="text" name="phone" placeholder="Phone number" />
+                            <input type="text" name="address" placeholder="Address" />
+                            <input required type="password" name="password" placeholder="Password" />
+                            <input type="hidden" name="signup" value=""/>
                             <button>Sign Up</button>
                             ';
-                if(isset($_SESSION["error"])){
-                    echo $_SESSION["error"];
+                if(isset($_SESSION["signup_error"])){
+                    echo '<p style="padding-top:0.5rem; color:red">'.$_SESSION["signup_error"] .' </p>';
                 }                
                 echo '
                         </form>
@@ -100,12 +152,12 @@
                     <div class="form-container sign-in-container">
                         <form method="post" action="./login.php">
                             <h1 class="headings-1">Sign in</h1>
-                            <input type="email" name="email" placeholder="Email" />
-                            <input type="password" name="password" placeholder="Password" />                
+                            <input required type="email" name="email" placeholder="Email" />
+                            <input required type="password" name="password" placeholder="Password" />                
                             <input type="hidden" name="signin" value=""/>
                             <button>Sign In</button>';
-                if(isset($_SESSION["error"])){
-                    echo '<p style="padding-top:0.5rem; color:red">'.$_SESSION["error"] .' </p>';
+                if(isset($_SESSION["login_error"])){
+                    echo '<p style="padding-top:0.5rem; color:red">'.$_SESSION["login_error"] .' </p>';
                 }                                      
                 echo '
                         </form>
