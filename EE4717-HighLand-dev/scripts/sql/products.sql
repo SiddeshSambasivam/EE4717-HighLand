@@ -1,0 +1,35 @@
+use HighLand;
+
+INSERT INTO products (title, price, description, image, items_in_stock, rating, category, color, size, tags) VALUES 
+    ("Two-toned Leather Sneaker", 59.99, "This stylish sneaker has a two-tone upper and leather lining for a look that's perfect for any outfit. ", "../assets/product_1.jpg", 100, 5, "shoes", "brown,blue", "6,7,8,9", "men"),
+    ("Pique Biker Jacket", 69.99, "A biker leather jacket with multiple pockets thats boudn to leave an impression.", "../assets/product_2.jpg", 100, 4, "clothing", "brown", "S,M,L", "men"),
+    ("Black Low-Cut Sneaker",49.99,"This black sneaker is a staple in every fashionista wardrobe that complements all outfits.","../assets/product_3.jpg",100,4.2 ,"shoes","6,7,8,9,10","black","men,women"),
+    ("Khaki Distressed Pullover",54.99,"Complete any outfit with this pullover thats sure to keep you warm in the winter while looking stylish.","../assets/product_4.jpg",100 ,4.4 ,"top","S,M,L","brown","men"),
+    ("Monochrome Graphic T-Shirt",19.99,"Embrace your youthful self with this graphic tee.","../assets/product_5.jpg",100 ,3.9 ,"top","S,M,L","blue","men"),
+    ("Grey Merino Wool Scarf",24.90,"Stay warm and fashionable with this scraf made with premium 100% Merino Wool sourced from the highest grade Merino sheeps.","../assets/product_6.jpg",100 ,4.1 ,"accessory","grey","S,M","men,women"),
+    ("Leather backpack",69.99,"This all-day backpack accompanies you through everyday activities with its waterproof inner lining and padded straps for all day comfort.","../assets/product_7.jpg",100 ,3.7 ,"accessory","brown","S,M","men,women"),
+    ("Navy Polo Tee",34.90,"Look modern and be comfortable with this fashionable navy polo tee thats made with a blend of natural cotton and spandex.","../assets/product_8.jpg",100 ,3.8 ,"top","blue","S,M,L","men"),
+    ("Floral Graphic T-Shirt",19.99,"Embrace your youthful self with this graphic tee.","../assets/product_9.jpg",100 ,3.9 ,"top","S,M,L","black","men"),
+    ("HighLand fragrance for him",28.90,"With notes of sweet cherry and dark oak, this complex fragrance is bound to empower you with renewed confidence.","../assets/product_10.jpg",100 ,3.6 ,"accessory","clear","S,M","men"),
+    ("All-Day Backpack",65.90,"This stylish all-day backpack made from premium grade leather with multiple compartments is sure to meet all your storage needs","../assets/product_11.jpg",100 ,3.7 ,"accessory","white","S,M","men"),
+    ("Woodlands Graphic Hoodie",49.90,"Stay warm and fashionable with this hoodie made with premium 100% Merino Wool sourced from the highest grade Merino sheeps","../assets/product_12.jpg", 60,4.1 ,"top","green","S,M,L","men"),
+    ("Leather Briefcase",59.90,"This stylish all-day briefcase made from premium grade leather with multiple compartments is sure to meet all your storage needs","../assets/product_13.jpg",50 ,3.6 ,"accessory","brown","S,M","men"),
+    ("Gold Plated Cufflinks",29.90,"Look professional with this pair of lightweight 24karat gold plated cufflinks","../assets/product_14.jpg",40 ,3.7 ,"accessory","gold","S,M","men"),
+    ("Tinted Sunglasses",19.90,"Look stylish with this pair of lightweight tinted sunglasses","../assets/product_15.jpg",50,3.5,"accessory","brown","S,M","men"),
+    ("Monochromatic Jacket",24.90,"This black and grey jacket is a staple in every fashionista wardrobe that completes all outfits","../assets/product_16.jpg",60,3.8,"top","black,grey","S,M,L","men"),
+    ("Modern Two-toned Leather Sneaker", 55.99, "This stylish sneaker has a two-tone upper and leather lining for a look that's perfect for any outfit. ", "../assets/product_17.jpg", 100, 5, "shoes", "brown,blue", "6,7,8,9", "men"),
+    ("Checkered Cropped Top",25.90,"Be the center of attention with this blue checkered cropped top made with 100% natural cotton from a sustainable source","../assets/product_18.jpg",40,3.9,"top","blue,white","S,M,L","women"),
+    ("Oversized Stripped Oxford Shirt",39.90,"This oversized stripped oxford shirt is made from 100% natural cotton from a sustainable source","../assets/product_19.jpg",40,4.2,"top","blue","S,M,L","women"),
+    ("Cotton Blouse",29.90,"Be the center of attention with this red blouse made with 100% natural cotton from a sustainable source","../assets/product_20.jpg",50,4.3,"top","red","S,M,L","women"),
+    ("V-neck Graphic T-Shirt",19.99,"Embrace your youthful self with this graphic tee.","../assets/product_21.jpg",100 ,3.8 ,"top","S,M,L","red,black","women"),
+
+    ("Half-sleeved winter coat",89.90,"Stay warm and fashionable with this winter coat made with premium 100% Merino Wool sourced from the highest grade Merino sheeps","../assets/product_22.jpg",30,4.5,"top","white","S,M,L","women"),
+    ("Oversized Long-Sleeved Wool Shirt",32.90,"Stay warm and fashionable with this shirt made with premium 100% Merino Wool sourced from the highest grade Merino sheeps","../assets/product_23.jpg",40,3.8,"top","red","S,M,L","women"),
+    ("501 Graphic T-Shirt",19.99,"Embrace your youthful self with this graphic tee.","../assets/product_24.jpg",100 ,3.5 ,"top","S,M,L","white","women"),
+    ("Palm Tree Shirt",19.99,"Embrace your youthful self with this shirt.","../assets/product_25.jpg",100 ,3.4 ,"top","S,M,L","pink,black","men"),
+    ("Strapped Tank-Top",29.90,"Be the center of attention with this white tank top made with 100% natural cotton from a sustainable source","../assets/product_26.jpg",50,4.2,"top","white","S,M,L","women"),
+
+    ("Stripped Graphic Shirt",19.99,"Embrace your youthful self with this shirt.","../assets/product_27.jpg",100 ,3.4 ,"top","S,M,L","white,brown","men"),
+    ("Oversized Stripped Long-Sleeved Oxford Shirt",29.90,"Stay fashionable with this shirt made with premium 100% Merino Wool sourced from the highest grade Merino sheeps","../assets/product_28.jpg",40,3.8,"top","white,red","S,M,L","men"),
+    ("Full Length Cotton Dress",39.90,"Be the center of attention with this orange dress made with 100% natural cotton from a sustainable source","../assets/product_29.jpg",50,3.9,"top","orange","S,M,L","women"),
+    ("Woolen Bag",32.90,"Stay warm and fashionable with this bag made with premium 100% Merino Wool sourced from the highest grade Merino sheeps","../assets/product_30.jpg",40,3.8,"accessory","red","S,M,L","men");
