@@ -124,6 +124,8 @@
             $result = $conn->query($sql);
             $conn->close();
 
+            $products = "";
+
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {                                    
                     $products .= '
@@ -138,7 +140,7 @@
                                 <div class="rating">';
 
                     for($i = 0; $i < 5; $i++){
-                        if($i < $row['rating']){
+                        if($i < floor($row['rating'])){
                             $products .= '<span class="fa fa-star checked"></span>';
                         }else{
                             $products .= '<span class="fa fa-star"></span>';

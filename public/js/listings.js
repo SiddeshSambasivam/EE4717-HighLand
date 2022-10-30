@@ -70,7 +70,7 @@ function handleRatingFilter(e){
 
         console.log(stars, rating);
         
-        if(stars <= rating){
+        if(stars == rating){
             product.style.display = '';
         }else{
             product.style.display = 'none';

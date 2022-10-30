@@ -159,6 +159,8 @@
                     $sql = "SELECT * FROM `products` WHERE `category` = 'shoes' LIMIT ".$this_page_first_result.",".$results_per_page;
                     $result = $conn->query($sql);
                     $conn->close();
+
+                    $products = "";
  
                     if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {                                    
@@ -171,10 +173,10 @@
                                             Add To Cart
                                         </a>
                                         <h4 class="name">'.$row['title'].'</h4>                                    
-                                        <div class="rating" rating='.$row["rating"].'>';
+                                        <div class="rating" rating='.floor($row["rating"]).'>';
 
                             for($i = 0; $i < 5; $i++){
-                                if($i < $row['rating']){
+                                if($i < floor($row['rating'])){
                                     $products .= '<span class="fa fa-star checked"></span>';
                                 }else{
                                     $products .= '<span class="fa fa-star"></span>';
