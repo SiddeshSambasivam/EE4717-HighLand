@@ -147,7 +147,7 @@
                     
                     $products .= '                    
                                 </div>
-                                <h3>$'.$row['price'].'</h3>
+                                <h3>S$'.$row['price'].'</h3>
                             </div>
                         </div>';
                 }
