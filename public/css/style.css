@@ -8,6 +8,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 :root {
@@ -22,6 +24,8 @@
     --grey-darken-4: #212121;
 
     --gold: #f7941d;
+    --red: #ff0000;
+    --green: #2e7d32;
 }
 
 body {
@@ -78,6 +82,10 @@ body {
     letter-spacing: 0.1rem;
 
     transition: all 0.08s ease-in-out;
+}
+
+.header__top_right_cta span {
+    color: var(--white);
 }
 
 .header__top_right_cta a:hover {
@@ -214,12 +222,91 @@ body {
 
 .hero {
     background-image: url('../assets/hero-1.jpg');
-    height: 800px;
+    height: 780px;
     padding-top: 230px;
-    margin-bottom: 5rem;
+    margin-bottom: 1rem;
+
+    padding: 8% 18% 0 18%;
+}
+
+.hero__label {
+    color: var(--red);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    padding: 1.2rem 0rem 0.95rem 0rem;
+}
+
+.hero__title {
+    color: var(--black);
+    font-size: 4rem;
+    font-weight: 700;
+    padding: 0rem 0rem 1rem 0rem;
+}
+
+.hero__info {
+    color: var(--grey-darken-3);
+    font-size: 1.3rem;
+    font-weight: 400;
+    padding: 0rem 0rem 4rem 0rem;
+    max-width: 650px;
+    line-height: 2rem;
+}
+
+.hero__cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 200px;
+    color: var(--white);
+    font-size: 1.1rem;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    background-color: var(--black);
+    padding: 1.2rem 2rem;
+
+    border-radius: 0.2rem;
+
+    transition: all 80ms ease-in;
+}
+
+.hero__cta:hover {
+    opacity: 0.7;
+    transform: scale(0.98);
+
+    /* shadow */
+    box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.1), 0 0 0 0.5px rgba(0, 0, 0, 0.1);
+}
+
+.cta__move {
+    transition: all 0.1s ease-out;
+}
+
+.hero__cta:hover .cta__move {
+    transition: all 80ms ease-in;
+    transform: translateX(0.5rem);
+}
+
+.hero__cta:active {
+    transform: scale(0.85);
+}
+
+.hero__cta:focus {
+    outline: none;
 }
 
 /* Products Section */
+
+.top_products__section_header {
+    padding: 2.5rem 0rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    color: var(--grey-darken-2);
+}
 
 .products-container {
     display: flex;
@@ -281,6 +368,54 @@ body {
 .product__info h4 {
     font-size: 1rem;
     font-weight: 500;
+
+    transition-property: all, all;
+    transition-duration: 0s, 0.3s;
+    transition-timing-function: ease, ease;
+    transition-delay: 0s, 0s;
+}
+
+.add_cart__btn {
+    z-index: 1;
+
+    display: none;
+    opacity: 0;
+    position: absolute;
+    top: 240px;
+
+    text-align: left;
+    cursor: pointer;
+
+    transition-property: all, all;
+    transition-duration: 0s, 0.3s;
+    transition-timing-function: ease, ease;
+    transition-delay: 0s, 0s;
+}
+
+.add_cart__btn:hover {
+    opacity: 0.3;
+}
+
+.product__card:hover .add_cart__btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    text-decoration: none;
+    color: var(--black);
+
+    font-size: 0.9rem;
+    font-weight: 700;
+
+    transform: translateY(60px);
+
+    opacity: 1;
+    background: transparent;
+    border: 0;
+}
+
+.product__card:hover h4 {
+    opacity: 0;
 }
 
 /* Listings Page */
@@ -296,4 +431,79 @@ body {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+}
+
+/* Snack bar */
+
+#snackbar {
+    visibility: hidden;
+    min-width: 160px;
+    margin-left: -20px;
+    background-color: var(--green);
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 90%;
+    bottom: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
 }

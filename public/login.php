@@ -120,7 +120,57 @@
     </script>
 </head>
 <body>
-    <navbar-head></navbar-head>
+    <header class="header">
+        <div class="header__top">
+            <div class="header__top_left_info">
+                <p>
+                    Free shippings on all orders, 30 days return and refund policy.
+                </p>
+            </div>            
+            <div class="header__top_right_cta">
+                <?php 
+                    if(isset($_SESSION['user_id'])){
+                        echo "<span>Welcome ".$_SESSION['name']."!</span>";
+                        echo "<a href='logout.php'>Logout</a>";
+                    }else{
+                        echo '<a href="./login.php">Sign up</a>
+                             <a href="#">faqs</a>';
+                    }
+                ?>
+            </div>
+        </div>
+        <div class="header__bottom">
+            <div class="header__bottom_logo">
+                <a href="./index.php">HighLand</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="./index.php">Home</a></li>
+                    <li><a href="./clothing.php">Clothing</a></li>
+                    <li><a href="./shoes.php">Shoes</a></li>
+                    <li><a href="./accessories.php">Accessories</a></li>
+                    <li><a href="./about.php">About</a></li>                    
+                </ul>
+            </nav>
+            <div class="header__bottom_cta">                  
+                <a href="./my-cart.php">
+                    <span class="material-symbols-outlined">
+                        shopping_cart
+                    </span>                            
+                </a>                
+                <a href="#">
+                    <span class="material-symbols-outlined">
+                        search
+                    </span>                                                                            
+                </a>   
+                <a href="./login.php">
+                    <span class="material-symbols-outlined">
+                        account_circle
+                    </span>                            
+                </a>
+            </div>
+        </div>
+    </header>          
     <div class="auth__container">        
         <?php
             if (isset($_SESSION['user_id']))

@@ -74,19 +74,24 @@ class Footer extends HTMLElement {
 }
 
 class ProductCard extends HTMLElement {
-
+    
     connectedCallback() {
 
         const product_name = this.getAttribute('product_name');
         const product_price = this.getAttribute('product_price');
         const product_image = this.getAttribute('product_image');
+        this.product_id = this.getAttribute('product_id');
 
         this.innerHTML = `
             <div class="product__card">
                 <img class="product__card_img" src="${product_image}" alt="product image">
                 <div class="product__info">
-                    <h4>${product_name}</h4>                
-                    <div class="rating">
+                    <a href="$_SERVER['PHP_SELF']" class="add_cart__btn">
+                        <span class="material-symbols-outlined">add</span>
+                        Add To Cart
+                    </a>
+                    <h4>${product_name}</h4>                                    
+                    <div class="rating">                    
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
