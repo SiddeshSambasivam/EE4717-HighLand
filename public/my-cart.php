@@ -44,8 +44,8 @@
             cell.innerHTML = '<b>Quantity</b>';
             cell = row.insertCell(3);
             cell.innerHTML = '<b>Total</b>';
-            // cell = row.insertCell(4);
-            // cell.innerHTML = '<b>Remove</b>';
+            cell = row.insertCell(4);
+            cell.innerHTML = '<b>Remove</b>';
 
             var tbody = document.createElement('tbody');
             tbody.setAttribute('id', 'cartTableBody');
@@ -59,11 +59,19 @@
                 cell = row.insertCell(1);
                 cell.innerHTML = precise(item.price);
                 cell = row.insertCell(2);
-                cell.innerHTML = item.qty;
+                // insert a input with minimum value 1 with the current quantity
+                cell.innerHTML = `
+                    <div class="quantity-block">
+                        <button class="quantity-arrow-minus qty__btn"> - </button>                        
+                        <input class="quantity-num qty__input" type="number" min="1" value="${item.qty}" onchange="updateQuantity(' + i + ', this.value)">
+                        <button class="quantity-arrow-plus qty__btn"> + </button>
+                    </div>
+                    `;                
                 cell = row.insertCell(3);
                 cell.innerHTML = precise(item.price * item.qty);
-                // cell = row.insertCell(4);
-                // cell.innerHTML = '<button onclick="removeItem(' + i + ')">Remove</button>';
+                cell = row.insertCell(4);
+                cell.innerHTML = `<button data-index="${i}" class="remove__btn" onclick="removeItem(' + i + ')">Remove</button>`;                
+                cell.style.width = '200px';                
                 total += item.price * item.qty;
             }
 
@@ -75,8 +83,8 @@
             cell = totalRow.insertCell(1);
             cell.innerHTML = '';
             cell = totalRow.insertCell(2);
-            cell.innerHTML = '';
-            cell = totalRow.insertCell(3);
+            cell.innerHTML = '';            
+            cell = totalRow.insertCell(3);        
             cell.innerHTML = precise(total);
 
             var checkout = document.createElement('button');
@@ -95,8 +103,7 @@
 
     </script>
 </head>
-<body>
-    <!-- <navbar-head></navbar-head> -->
+<body>    
     <header class="header">
         <div class="header__top">
             <div class="header__top_left_info">
@@ -131,9 +138,10 @@
             </nav>
             <div class="header__bottom_cta">                  
                 <a href="./my-cart.php">
-                    <span class="material-symbols-outlined">
+                    <span class="material-symbols-outlined" style="position:relative">
                         shopping_cart
-                    </span>                            
+                    </span>                     
+                    <div class="number">0</div>          
                 </a>                
                 <a href="#">
                     <span class="material-symbols-outlined">
@@ -151,6 +159,63 @@
     <div id="cart" class="cart__container">
         <h2>My Cart</h2>
     </div>
-    <footer-foot></footer-foot>    
+    <footer-foot></footer-foot> 
+    <script>
+        $(function() {
+
+            (function quantityProducts() {
+                
+                var quantityArrowMinus = document.querySelectorAll('.quantity-arrow-minus');
+                var quantityArrowPlus = document.querySelectorAll('.quantity-arrow-plus');
+                var quantityNum = document.querySelectorAll('.quantity-num');
+
+                for (var i = 0; i < quantityArrowMinus.length; i++) {
+                    quantityArrowMinus[i].addEventListener('click', quantityMinus);
+                    quantityArrowPlus[i].addEventListener('click', quantityPlus);
+                }
+
+                function quantityMinus() {
+                    var input = this.parentNode.querySelector('.quantity-num');
+                    var value = parseInt(input.value);
+                    if (value > 1) {
+                        value = value - 1;
+                    } else {
+                        value = 1;
+                    }
+                    input.value = value;
+                }
+
+                function quantityPlus() {
+                    var input = this.parentNode.querySelector('.quantity-num');
+                    var value = parseInt(input.value);
+                    if (value < 100) {
+                        value = value + 1;
+                    } else {
+                        value = 100;
+                    }
+                    input.value = value;
+                }
+                
+                var removeBtns = document.querySelectorAll('.remove__btn');
+                for (var i = 0; i < removeBtns.length; i++) {
+                    removeBtns[i].addEventListener('click', removeItem);
+                }
+
+                function removeItem() {
+
+                    var cartItems = JSON.parse(sessionStorage.getItem('cart'));                    
+                    var index = this.getAttribute('data-index');
+                    cartItems.splice(index, 1);
+
+                    sessionStorage.setItem('cart', JSON.stringify(cartItems));
+                    window.location.href = 'my-cart.php';
+                }
+
+
+            })();
+
+        });
+    </script>   
+    <script src="./js/notif.js"></script>
 </body>
 </html>

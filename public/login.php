@@ -155,9 +155,10 @@
             </nav>
             <div class="header__bottom_cta">                  
                 <a href="./my-cart.php">
-                    <span class="material-symbols-outlined">
+                    <span class="material-symbols-outlined" style="position:relative">
                         shopping_cart
-                    </span>                            
+                    </span>                     
+                    <div class="number">0</div>       
                 </a>                
                 <a href="#">
                     <span class="material-symbols-outlined">
@@ -234,5 +235,6 @@
     </div>
     <footer-foot></footer-foot>
     <script src="./js/login.js"></script>
+    <script src="./js/notif.js"></script>
 </body>
 </html>

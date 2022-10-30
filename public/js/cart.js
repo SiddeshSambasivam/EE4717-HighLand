@@ -25,5 +25,6 @@ function handleAddCart(product, price, qty){
     }
 
     sessionStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
 
 }

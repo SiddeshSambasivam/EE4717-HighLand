@@ -159,6 +159,25 @@ body {
     text-decoration: none;
     transition: all 0.08s ease-in-out;
     padding-left: 1rem;
+    position: relative;
+}
+
+.number {
+    background-color: var(--red);
+
+    border-radius: 50%;
+    color: var(--white);
+
+    font-size: 0.65rem;
+    width: 1.2rem;
+    height: 1.2rem;
+
+    font-weight: 800;
+    text-align: center;
+    position: absolute;
+    top: -20px;
+    left: 25px;
+    padding: 3px;
 }
 
 .header__bottom_cta a:hover {

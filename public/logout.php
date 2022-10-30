@@ -21,5 +21,6 @@
   header("Location: ./index.php");
   die();
 ?> 
+<script src="./js/notif.js"></script>
 </body>
 </html>
