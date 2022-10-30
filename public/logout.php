@@ -7,6 +7,9 @@
   session_destroy();
 ?>
 <html>
+  <head>
+        <link rel="icon" href="assets/HighLand.png">
+  </head>
 <body>
 <h1>Log out</h1>
 <?php 
