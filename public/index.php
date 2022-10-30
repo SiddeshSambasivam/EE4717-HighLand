@@ -104,7 +104,7 @@
         </div>
     </header>           
     <section class="hero set-bg" id="hero">
-        <div class="hero__label">Summer collection</div>
+        <div class="hero__label">Winter collection</div>
         <h1 class="hero__title">Winter-Collections 2022</h1>
         <p class="hero__info">The latest designs from a wide variety of brands for all your fashion cravings. Checkout the new winter collection 2022.</p>
 
