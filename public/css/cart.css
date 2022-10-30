@@ -138,6 +138,16 @@ footer {
     padding: 0% 18%;
 }
 
+.checkout__container_thankyou {
+    display: flex;
+    flex-direction: column;
+    padding: 0% 18%;
+    padding-top: 5rem;
+}
+.thank_you {
+    margin: 0 auto;
+}
+
 .checkout__container h2 {
     padding: 2.5rem 0rem 1.5rem 0rem;
 }

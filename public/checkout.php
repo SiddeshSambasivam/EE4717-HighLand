@@ -11,26 +11,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./js/components.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
 
     <script>
-        function handleSubmit(){            
 
-        }
+        function sendEmail(message) {
+            Email.send({
+                Host : "smtp.elasticemail.com",
+                Username : "plutocrat45@gmail.com",
+                Password : "",                
+                To : 'plutocrat45@gmail.com',
+                From : "plutocrat45@gmail.com",
+                Subject : "Test email",
+                Body : message                
+            }).then(
+                message => {                    
+                    sessionStorage.removeItem("cart");
+                    window.location.href = "thank-you.php";
+                });
+        }  
     </script>
 
     <?php
         session_start();    
-        
-        // check if post request is made
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){                             
-            
-            // include("../src/db_connect.php");            
-
-            // create new order in orders table
-            // $sql = "INSERT INTO orders (user_id, total_price, status) VALUES (?, ?, ?)";
-
-            // header('Location: ./thank-you.php');
-        }        
         
     ?>
 
@@ -39,7 +42,46 @@
             window.location.href = "login.php";
         }    
 
+        if (sessionStorage.getItem("cart") == null) {
+            window.location.href = "index.php";
+        }
+
         function order(){
+
+            var user_id = sessionStorage.getItem("user_id");
+            
+            var cart = JSON.parse(sessionStorage.getItem("cart"));
+            var total_price = 0;
+
+            for(var i = 0; i < cart.length; i++){
+                total_price += cart[i].price * cart[i].qty;
+            }
+
+            var status = "0";                              
+            var address = document.getElementById("address").value;
+
+            // console.log(user_id, total_price, status, address);
+            
+
+            jQuery.ajax({
+                url: "handleOrder.php",
+                data: {
+                    user_id: user_id,
+                    total_price: precise(total_price),
+                    address: address,
+                    status: status,                    
+                    data:cart,
+                },
+                method: 'POST',
+                success: function(data){
+                    // console.log(data);
+
+                    var message = "Thank you for your order! Your order number is " + data + ". We will contact you soon.";
+
+                    // send email to plutocrat45@gmail.com                    
+                    sendEmail(message);                    
+                }
+            });
 
         }
 
@@ -164,7 +206,7 @@
 
         <div class="checkout__container__left">
             <h2>Shipping Address</h2>
-            <form action="checkout.php" method="POST">
+            <div>
                 <div class="checkout__container__left__form">
                     <div class="checkout__container__left__form__input">
                         <label for="name">Name</label>
@@ -193,9 +235,9 @@
                     </div>
                 </div>
                 <div class="checkout__container__left__form__input">
-                    <button type="submit" value="Order" name="submit">Order</button>
+                    <button onclick="order()" value="Order" name="submit">Order</button>
                 </div>
-            </form>
+            </div>
         </div>
     
         <!-- <div class="checkout__container__right"> -->

@@ -67,8 +67,9 @@
             </div>
         </div>
     </header> 
-    <div class="checkout__container">
-        <h2>Thank you for shopping with us!</h2>
+    <div class="checkout__container_thankyou">
+        <h2 align="center" class="thank_you">Thank you for shopping with us!</h2>
+        <a align="center" class="cart__invalid_info" href="./index.php">🛒 Continue shopping</a>'
     </div>
     <footer-foot></footer-foot>    
     <script src="./js/notif.js"></script>
