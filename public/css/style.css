@@ -61,10 +61,16 @@ body {
 .header__top {
     display: flex;
     padding: 1rem;
-    padding-inline: 18%;
+    padding-inline: 5%;
     justify-content: space-between;
 
     background-color: var(--black);
+}
+
+@media (min-width: 1440px) {
+    .header__top {
+        padding-inline: 18%;
+    }
 }
 
 .header__top_left_info {
@@ -104,9 +110,15 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem;
-    padding-inline: 18%;
+    padding-inline: 5%;
 
     overflow: hidden;
+}
+
+@media (min-width: 1440px) {
+    .header__bottom {
+        padding-inline: 18%;
+    }
 }
 
 .header__bottom_logo {
@@ -448,10 +460,16 @@ body {
 
 .main-container {
     padding: 0.5rem;
-    padding-inline: 18%;
+    padding-inline: 5%;
     display: flex;
     padding-top: 30px;
     min-height: 80vh;
+}
+
+@media (min-width: 1440px) {
+    .main-container {
+        padding-inline: 18%;
+    }
 }
 
 .query__panel {

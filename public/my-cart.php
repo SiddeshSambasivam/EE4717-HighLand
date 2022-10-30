@@ -7,8 +7,7 @@
     <title>HighLand - My Cart</title>
     <link rel="icon" href="assets/HighLand.png">    
     <link rel="stylesheet" href="css/cart.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/style.css">    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./js/components.js"></script>
