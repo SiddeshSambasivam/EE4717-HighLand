@@ -150,7 +150,7 @@
                     <li><a href="./clothing.php">Clothing</a></li>
                     <li><a href="./shoes.php">Shoes</a></li>
                     <li><a href="./accessories.php">Accessories</a></li>
-                    <li><a href="./about.php">About</a></li>                    
+                    <!-- <li><a href="./about.php">About</a></li> -->                    
                 </ul>
             </nav>
             <div class="header__bottom_cta">                  
