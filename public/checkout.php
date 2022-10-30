@@ -7,12 +7,103 @@
     <title>HighLand - Checkout</title>
     <link rel="icon" href="assets/HighLand.png">
     <link rel="stylesheet" href="css/cart.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/style.css">    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./js/components.js"></script>
+
     <script>
+        function handleSubmit(){            
+
+        }
+    </script>
+
+    <?php
+        session_start();    
+        
+        // check if post request is made
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){                             
+            
+            // include("../src/db_connect.php");            
+
+            // create new order in orders table
+            // $sql = "INSERT INTO orders (user_id, total_price, status) VALUES (?, ?, ?)";
+
+            // header('Location: ./thank-you.php');
+        }        
+        
+    ?>
+
+    <script> 
+        if (sessionStorage.getItem("user_id") == null) {
+            window.location.href = "login.php";
+        }    
+
+        function order(){
+
+        }
+
+        function precise(x) {
+            return x.toPrecision(4);
+        }
+
+        function createSummary(){
+            console.log('DOM loaded with JavaScript');         
+            
+            // get cart items from session storage
+            var cartItems = JSON.parse(sessionStorage.getItem('cart'));
+
+            // create summary table
+            var cart = document.getElementById('summary');
+            var total = 0;
+            
+            var table = document.createElement('table');
+            table.setAttribute('id', 'cartTable');
+            table.setAttribute('class', 'cartTable');
+            var header = table.createTHead();
+            var row = header.insertRow(0);
+            var cell = row.insertCell(0);
+            cell.innerHTML = '<b>Product</b>';
+            cell = row.insertCell(1);
+            cell.innerHTML = '<b>Price</b>';
+            cell = row.insertCell(2);
+            cell.innerHTML = '<b>Quantity</b>';
+            cell = row.insertCell(3);
+            cell.innerHTML = '<b>Total</b>';
+
+            var tbody = document.createElement('tbody');
+            tbody.setAttribute('id', 'cartTableBody');
+            table.appendChild(tbody);
+
+            for (var i = 0; i < cartItems.length; i++) {
+                var item = cartItems[i];
+                var row = tbody.insertRow(i);
+                var cell = row.insertCell(0);
+                cell.innerHTML = item.product;
+                cell = row.insertCell(1);
+                cell.innerHTML = precise(item.price);
+                cell = row.insertCell(2);                
+                cell.innerHTML = item.qty;
+                cell = row.insertCell(3);
+                cell.innerHTML = precise(item.price * item.qty);
+                total += item.price * item.qty;
+            }
+
+            cart.appendChild(table);
+
+            var totalRow = tbody.insertRow(cartItems.length);
+            var cell = totalRow.insertCell(0);
+            cell.innerHTML = '<b>Total</b>';
+            cell = totalRow.insertCell(1);
+            cell.innerHTML = '';
+            cell = totalRow.insertCell(2);
+            cell.innerHTML = '';            
+            cell = totalRow.insertCell(3);        
+            cell.innerHTML = precise(total);
+            
+        };
+
+        window.addEventListener("DOMContentLoaded", createSummary);
     </script>
 </head>
 <body>    
@@ -69,9 +160,54 @@
         </div>
     </header> 
     <div class="checkout__container">
-        <h2>Thank you for shopping with us!</h2>
+        <!-- <h2>Thank you for shopping with us!</h2> -->
+
+        <div class="checkout__container__left">
+            <h2>Shipping Address</h2>
+            <form action="checkout.php" method="POST">
+                <div class="checkout__container__left__form">
+                    <div class="checkout__container__left__form__input">
+                        <label for="name">Name</label>
+                        <?php
+                            echo '<input type="text" name="name" id="name" value="'.$_SESSION['name'].'">';
+                        ?>                        
+                    </div>
+                    <div class="checkout__container__left__form__input">
+                        <label for="email">Email</label>
+                        <?php
+                            echo '<input type="email" name="email" id="email" value="'.$_SESSION['email'].'">';
+                        ?>                        
+                    </div>
+                    <div class="checkout__container__left__form__input">
+                        <label for="address">Address</label>
+                        <?php
+                            echo '<textarea type="text" name="address" id="address">'.$_SESSION['address'].'</textarea>';
+                        ?>
+                        <!-- <input type="text" name="address" id="address" required> -->
+                    </div>
+                    <div class="checkout__container__left__form__input">
+                        <label for="phone">Phone</label>
+                        <?php
+                            echo '<input type="text" name="phone" id="phone" value="'.$_SESSION['phone'].'">';
+                        ?>                        
+                    </div>
+                </div>
+                <div class="checkout__container__left__form__input">
+                    <button type="submit" value="Order" name="submit">Order</button>
+                </div>
+            </form>
+        </div>
+    
+        <!-- <div class="checkout__container__right"> -->
+        <div class="checkout__container__right">
+            <h2>Order Summary</h2>
+            <div id="summary">            
+            </div>
+        </div>
     </div>
     <footer-foot></footer-foot>    
     <script src="./js/notif.js"></script>
+    <script>
+    </script>
 </body>
 </html>

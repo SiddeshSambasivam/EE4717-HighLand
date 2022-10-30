@@ -1,7 +1,7 @@
 
-function handleAddCart(product, price, qty){
+function handleAddCart(product, price, qty, id){
 
-    console.log(product, price, qty);
+    console.log(product, price, qty, id);
     
     let cart = JSON.parse(sessionStorage.getItem('cart'));
     if(cart == null){
@@ -13,7 +13,8 @@ function handleAddCart(product, price, qty){
 
 
     if(productInCart == null){
-        cart.push({
+        cart.push({ 
+            id: id,           
             product: product,
             price: price,
             qty: qty

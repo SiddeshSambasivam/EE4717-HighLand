@@ -169,7 +169,7 @@
                                 <div class="product__card">
                                     <img class="product__card_img" src="'.$row['image'].'" alt="product image">
                                     <div class="product__info">
-                                        <a class="add_cart__btn" onclick="handleAddCart(\''.$row["title"].'\','.$row['price'].',1); callSnacker()">
+                                        <a class="add_cart__btn" onclick="handleAddCart(\''.$row["title"].'\','.$row['price'].',1,\''.$row["product_id"].'\'); callSnacker()">
                                             <span class="material-symbols-outlined">add</span>
                                             Add To Cart
                                         </a>

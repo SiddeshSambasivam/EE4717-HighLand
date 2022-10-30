@@ -135,12 +135,73 @@ footer {
 
 .checkout__container {
     display: flex;
-    flex-direction: column;
     padding: 0% 18%;
-    justify-content: center;
-    text-align: center;
 }
 
 .checkout__container h2 {
-    padding: 4rem 0rem;
+    padding: 2.5rem 0rem 1.5rem 0rem;
+}
+
+.checkout__container__left {
+    width: 50%;
+}
+
+.checkout__container__left__form__input {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout__container input {
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid var(--grey);
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+}
+
+.checkout__container textarea {
+    width: 100%;
+
+    font: inherit;
+
+    max-width: 100%;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid var(--grey);
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    max-height: 4rem;
+}
+
+.checkout__container button {
+    border-radius: 0.5rem;
+    border: 1px solid var(--grey);
+    background-color: var(--black);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    margin-top: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+}
+
+.checkout__container button:active {
+    transform: scale(0.95);
+}
+
+.checkout__container button:focus {
+    outline: none;
+}
+
+.checkout__container__right {
+    width: 50%;
+    padding-left: 2rem;
+}
+
+#cartTable {
+    width: 100%;
+    padding: 0%;
 }

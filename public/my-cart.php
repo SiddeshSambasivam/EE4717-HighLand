@@ -96,7 +96,9 @@
             checkout.innerHTML = 'Checkout';
             checkout.addEventListener('click', function() {
 
-
+                if (sessionStorage.getItem("user_id") == null) {
+                    window.location.href = "login.php";
+                }
 
                 window.location.href = 'checkout.php';
             });
