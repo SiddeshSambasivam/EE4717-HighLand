@@ -14,6 +14,10 @@
         include("../src/db_connect.php");    
         
         session_start();
+        
+        if(!isset($_SESSION['user_id'])){
+            echo "<script>sessionStorage.removeItem('user_id');</script>";
+        }
 
         $sql = "SELECT COUNT(*) FROM products WHERE `category` = 'accessory'";
         $result = $conn->query($sql);

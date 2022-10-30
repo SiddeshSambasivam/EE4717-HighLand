@@ -15,6 +15,10 @@
         
         session_start();
 
+        if(!isset($_SESSION['user_id'])){
+            echo "<script>sessionStorage.removeItem('user_id');</script>";
+        }        
+
         $sql = "SELECT COUNT(*) FROM products WHERE `category` = 'clothing' OR `category` = 'top'";
         $result = $conn->query($sql);
         $row = $result->fetch_assoc();

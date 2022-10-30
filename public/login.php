@@ -92,6 +92,8 @@
 
                 unset($_SESSION['signup_error']);
                 
+                // echo a script tag to store the user_id in the session storage
+                
                 header("Location: login.php");
 
             }else{
@@ -107,10 +109,17 @@
             handleSignUp();
         }
 
+        if(isset($_SESSION['user_id'])){
+            echo '<script>sessionStorage.setItem("user_id", "'.$_SESSION['user_id'].'");</script>';            
+        }else{
+            echo "<script>sessionStorage.removeItem('user_id');</script>";
+        }
+        
     ?>
 
-    <script>
-        handleLogout = () => {
+    <script>                
+        handleLogout = () => {      
+            sessionStorage.removeItem("user_id");      
             $.ajax({
                 url: "./logout.php",
                 success: function(data){

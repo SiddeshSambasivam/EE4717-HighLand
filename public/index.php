@@ -13,40 +13,8 @@
         
         session_start();
 
-        if(!isset($_SESSION['cart'])){
-            $_SESSION['cart'] = array();
-        }
-
-        if(isset($_GET['buy'])){
-                        
-            $product = $_GET['buy'];
-            $price = $_GET['price'];
-
-            $quantity = 1;            
-            $exists = false;     
-            $index = 0;       
-
-            foreach($_SESSION['cart'] as $item){
-                if($product == $item['product']){
-                    $quantity = $item['quantity'] + 1;     
-                    $_SESSION['cart'][$index]['quantity'] = $quantity;
-                    $exists = true;
-                    break;
-                }
-                $index++;
-            }
-
-            if(!$exists){
-                $item = array(
-                    'product' => $product,
-                    'price' => $price,
-                    'quantity' => $quantity
-    
-                );    
-                array_push($_SESSION['cart'], $item);
-            }
-
-            echo "<script>console.log('Added to cart!');</script>";            
+        if(!isset($_SESSION['user_id'])){
+            echo "<script>sessionStorage.removeItem('user_id');</script>";
         }
 
     ?>

@@ -5,6 +5,8 @@
   $old_user = $_SESSION['valid_user'];  
   unset($_SESSION['valid_user']);
   session_destroy();
+
+  echo "<script>sessionStorage.removeItem('user_id');</script>";
 ?>
 <html>
   <head>
@@ -14,13 +16,12 @@
 <h1>Log out</h1>
 <?php 
   if (!empty($old_user))
-  {
+  {        
     header("Location: ./login.php");
     die();
-  }
-  header("Location: ./index.php");
+  }    
+  header("Location: ./index.php");  
   die();
 ?> 
-<script src="./js/notif.js"></script>
 </body>
 </html>

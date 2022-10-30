@@ -13,6 +13,11 @@
     <script src="./js/components.js"></script>
     <?php
         session_start();
+
+        if(!isset($_SESSION['user_id'])){
+            echo "<script>sessionStorage.removeItem('user_id');</script>";
+        }
+
     ?>
     <script>
         function precise(x) {
@@ -57,8 +62,7 @@
                 cell.innerHTML = item.product;
                 cell = row.insertCell(1);
                 cell.innerHTML = precise(item.price);
-                cell = row.insertCell(2);
-                // insert a input with minimum value 1 with the current quantity
+                cell = row.insertCell(2);                
                 cell.innerHTML = `
                     <div class="quantity-block">
                         <button class="quantity-arrow-minus qty__btn"> - </button>                        
@@ -91,6 +95,9 @@
             checkout.setAttribute('class', 'checkout__btn');
             checkout.innerHTML = 'Checkout';
             checkout.addEventListener('click', function() {
+
+
+
                 window.location.href = 'checkout.php';
             });
 

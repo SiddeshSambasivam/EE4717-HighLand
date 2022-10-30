@@ -106,12 +106,6 @@ checkout__btn:focus {
 
 footer {
     margin-top: 10rem;
-
-    /* bottom: 0; */
-    /* position: absolute; */
-    /* width: 100%; */
-    /* left: 0; */
-    /* right: 0; */
     text-align: center;
     z-index: 999;
 }
