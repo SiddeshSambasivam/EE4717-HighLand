@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
     <script src="./js/components.js"></script>
-    <?php
-        include("../src/products.php");
+    <?php        
         
         session_start();
 
