@@ -23,7 +23,7 @@
                 
             var cartItems = JSON.parse(sessionStorage.getItem('cart'));
             if (cartItems == null || cartItems.length == 0) {
-                document.getElementById('cart').innerHTML = '<p>Cart is empty</p>';
+                document.getElementById('cart').innerHTML = '<div align="center" style="padding-top:10rem"><span class="material-symbols-outlined cart__info_sbl">report</span></div><h2 align="center" style="padding-top:1rem">Cart is empty!</h2><p align="center" style="padding-top:0.5rem;font-size:1.2rem;">Please add products to cart to checkout.</p><a align="center" class="cart__invalid_info" href="./index.php">🛒 Return to shopping</a>';                
                 return;
             }
 
