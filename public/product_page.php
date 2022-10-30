@@ -84,51 +84,15 @@
         </div>
     </header>           
 
-    <div class="flex-container-product-page">
-        <div style="margin-top:50px;">
+    <div class="flex__container_product_page">        
             <?php 
-                echo '<img class="product__card_img" src="'.$row['image'].'" alt="product image" />';
+                echo '<img class="product__page_img" src="'.$row['image'].'" alt="product image" />';
             ?>
             <h2>
                 <?php 
                     echo $row['title'];
                 ?>
             </h2>
-            <p>
-                <?php 
-                    echo $row['description'];
-                ?>
-            </p>
-            <p>
-                <?php 
-                    echo $row['price'];
-                ?>
-            </p>
-            <?php
-              echo '<a onclick="handleAddCart(\''.$row["title"].'\','.$row['price'].',1,\''.$row["product_id"].'\'); callSnacker()">
-                <span class="material-symbols-outlined">add</span>
-                Add To Cart
-                </a>';
-
-                // split string separated by comma                
-                $colors = explode(",", $row['size']);
-                $sizes = explode(",", $row['color']);
-            ?>
-            <ul id="size">                
-                <?php
-                    foreach($sizes as $size){
-                        echo '<li>'.$size.'</li>';
-                    }
-                ?>
-            </ul>
-            <ul id="color">
-                <?php
-                    foreach($colors as $color){
-                        echo '<li>'.$color.'</li>';
-                    }
-                ?>
-            </ul>
-
             <div class="rating">
                 <?php
                     $products = "";                    
@@ -141,11 +105,39 @@
                     }   
                     echo $products;
                 ?>                                                          
-            </div>                                            
-        </div>
+            </div>              
+            <p>
+                <?php 
+                    echo $row['description'];
+                ?>
+            </p>
+            <h2>
+                S$
+                <?php 
+                    echo $row['price'];
+                ?>
+            </h2>
+            <?php
+              echo '<a class="product__page_btn" onclick="handleAddCart(\''.$row["title"].'\','.$row['price'].',1,\''.$row["product_id"].'\'); callSnacker()">
+                <span class="material-symbols-outlined">add</span>
+                Add To Cart
+                </a>';
+                
+                $colors = explode(",", $row['size']);
+                $sizes = explode(",", $row['color']);
+
+                echo "<div style='width:80%; display:flex; justify-content:space-around; padding: 1rem 0rem;'>Choose the color";
+                foreach($sizes as $size){
+                    echo '<input type="radio" id="size-product" name="size-product" value="'.$size.'">Black</input>';
+                }
+                echo "</div>";
+                echo "<div style='width:80%; display:flex; justify-content:space-around; padding: 1rem 0rem;'>Choose the size";
+                foreach($colors as $color){
+                    echo '<input type="radio" id="color-product" name="color-product" class="btn__product">'.$color.'</input>';
+                }
+                echo "</div>";
+            ?>
     </div>
-
-
     <footer-foot></footer-foot>
     <div id="snackbar">
         <span class="material-symbols-outlined">
