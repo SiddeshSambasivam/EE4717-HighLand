@@ -63,7 +63,7 @@
                 cell.innerHTML = `
                     <div class="quantity-block">
                         <button class="quantity-arrow-minus qty__btn"> - </button>                        
-                        <input class="quantity-num qty__input" type="number" min="1" value="${item.qty}" onchange="updateQuantity(' + i + ', this.value)">
+                        <input class="quantity-num qty__input" data-index="${i}" type="number" min="1" value="${item.qty}" onchange="updateQuantity(' + i + ', this.value)">
                         <button class="quantity-arrow-plus qty__btn"> + </button>
                     </div>
                     `;                
@@ -173,6 +173,34 @@
                     quantityArrowMinus[i].addEventListener('click', quantityMinus);
                     quantityArrowPlus[i].addEventListener('click', quantityPlus);
                 }
+                
+                function updateTotal(index) {
+                    var tbody = document.getElementById('cartTableBody');
+                    var row = tbody.rows[index];
+
+                    var price = parseFloat(row.cells[1].innerHTML);
+                    var qty = parseInt(row.cells[2].querySelector('.quantity-num').value);
+                                        
+                    row.cells[3].innerHTML = precise(price * qty);
+
+                    updateCartTotal();
+                    
+                }
+                
+                function updateCartTotal() {
+
+                    var tbody = document.getElementById('cartTableBody');
+
+                    var total = 0;
+                    for (var i = 0; i < tbody.rows.length - 1; i++) {
+                        var row = tbody.rows[i];
+                        total += parseFloat(row.cells[3].innerHTML);
+                    }
+
+                    var totalRow = tbody.rows[tbody.rows.length - 1];
+                    totalRow.cells[3].innerHTML = precise(total, 3);
+                    
+                }
 
                 function quantityMinus() {
                     var input = this.parentNode.querySelector('.quantity-num');
@@ -183,17 +211,38 @@
                         value = 1;
                     }
                     input.value = value;
+                    
+                    var index = input.getAttribute('data-index');
+                    var cartItems = JSON.parse(sessionStorage.getItem('cart'));                        
+                    var item = cartItems[index];
+                    item.qty = value;
+
+                    cartItems[index] = item;                        
+                    sessionStorage.setItem('cart', JSON.stringify(cartItems));       
+                    
+                    updateTotal(index);            
                 }
 
                 function quantityPlus() {
                     var input = this.parentNode.querySelector('.quantity-num');
                     var value = parseInt(input.value);
                     if (value < 100) {
-                        value = value + 1;
+                        value = value + 1;                        
+                        
                     } else {
                         value = 100;
                     }
                     input.value = value;
+
+                    var index = input.getAttribute('data-index');
+                    var cartItems = JSON.parse(sessionStorage.getItem('cart'));                        
+                    var item = cartItems[index];
+                    item.qty = value;
+
+                    cartItems[index] = item;                        
+                    sessionStorage.setItem('cart', JSON.stringify(cartItems));
+
+                    updateTotal(index);
                 }
                 
                 var removeBtns = document.querySelectorAll('.remove__btn');
@@ -209,8 +258,7 @@
 
                     sessionStorage.setItem('cart', JSON.stringify(cartItems));
                     window.location.href = 'my-cart.php';
-                }
-
+                }                
 
             })();
 
