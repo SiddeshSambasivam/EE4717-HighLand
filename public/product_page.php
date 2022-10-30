@@ -13,13 +13,24 @@
         
         session_start();
 
-        if(!isset($_SESSION['user_id'])){
-            echo "<script>sessionStorage.removeItem('user_id');</script>";
-        }
+        include("../src/db_connect.php");    
 
+        $item_id = $_GET['id'];    
+        $sql = "SELECT * FROM `products` WHERE `product_id` = '$item_id'";
+        $result = $conn->query($sql);
+
+        $row = $result->fetch_assoc();
+        
+        $conn->close();
+       
     ?>
+
+
 </head>
-<body>    
+
+
+<div id=wrapper>
+<body>
     <header class="header">
         <div class="header__top">
             <div class="header__top_left_info">
@@ -72,64 +83,69 @@
             </div>
         </div>
     </header>           
-    <section class="hero set-bg" id="hero">
-        <div class="hero__label">Winter collection</div>
-        <h1 class="hero__title">Winter-Collections 2022</h1>
-        <p class="hero__info">The latest designs from a wide variety of brands for all your fashion cravings. Checkout the new winter collection 2022.</p>
 
-        <a href="./clothing.php" class="hero__cta">
-            shop now
-            <span class="material-symbols-outlined cta__move">
-                arrow_forward_ios
-            </span>
-        </a>
-    </section>
-    <h2 class="top_products__section_header">Top Rated Products</h2>
-    <section class="products-container" id="products">   
-        <?php
-            include("../src/db_connect.php");    
+    <div class="flex-container-product-page">
+        <div style="margin-top:50px;">
+            <?php 
+                echo '<img class="product__card_img" src="'.$row['image'].'" alt="product image" />';
+            ?>
+            <h2>
+                <?php 
+                    echo $row['title'];
+                ?>
+            </h2>
+            <p>
+                <?php 
+                    echo $row['description'];
+                ?>
+            </p>
+            <p>
+                <?php 
+                    echo $row['price'];
+                ?>
+            </p>
+            <?php
+              echo '<a onclick="handleAddCart(\''.$row["title"].'\','.$row['price'].',1,\''.$row["product_id"].'\'); callSnacker()">
+                <span class="material-symbols-outlined">add</span>
+                Add To Cart
+                </a>';
 
-            $sql = "SELECT * FROM `products` WHERE `rating` > 4 LIMIT 8";
-            $result = $conn->query($sql);
-            $conn->close();
+                // split string separated by comma                
+                $colors = explode(",", $row['size']);
+                $sizes = explode(",", $row['color']);
+            ?>
+            <ul id="size">                
+                <?php
+                    foreach($sizes as $size){
+                        echo '<li>'.$size.'</li>';
+                    }
+                ?>
+            </ul>
+            <ul id="color">
+                <?php
+                    foreach($colors as $color){
+                        echo '<li>'.$color.'</li>';
+                    }
+                ?>
+            </ul>
 
-            $products = "";
-
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {                                    
-                    $products .= '
-                        <div class="product__card">
-                            <a href="product_page.php?id='.$row["product_id"].'">
-                            <img class="product__card_img" src="'.$row['image'].'" alt="product image">
-                            <div class="product__info">
-                                <a class="add_cart__btn" onclick="handleAddCart(\''.$row["title"].'\','.$row['price'].',1,\''.$row["product_id"].'\'); callSnacker()">
-                                    <span class="material-symbols-outlined">add</span>
-                                    Add To Cart
-                                </a>
-                                <h4>'.$row['title'].'</h4>                                    
-                                <div class="rating">';
-
+            <div class="rating">
+                <?php
+                    $products = "";                    
                     for($i = 0; $i < 5; $i++){
                         if($i < floor($row['rating'])){
                             $products .= '<span class="fa fa-star checked"></span>';
                         }else{
                             $products .= '<span class="fa fa-star"></span>';
                         }
-                    }
-                    
-                    $products .= '                    
-                                </div>
-                                <h3>S$'.$row['price'].'</h3>
-                            </div></a>
-                        </div>';
-                }
-            } else {
-                $products = "0 results";
-            }                        
+                    }   
+                    echo $products;
+                ?>                                                          
+            </div>                                            
+        </div>
+    </div>
 
-            echo $products;
-        ?>
-    </section>                        
+
     <footer-foot></footer-foot>
     <div id="snackbar">
         <span class="material-symbols-outlined">
@@ -139,6 +155,6 @@
     </div>
     <script src="./js/cart.js"></script>
     <script src="./js/snackbar.js"></script>
-    <script src="./js/notif.js"></script>
+    <script src="./js/notif.js"></script>    
 </body>
 </html>

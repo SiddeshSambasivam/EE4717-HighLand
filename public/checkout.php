@@ -15,11 +15,11 @@
 
     <script>
 
-        function sendEmail(message) {
+        function sendEmail(message) {                    
             Email.send({
                 Host : "smtp.elasticemail.com",
                 Username : "plutocrat45@gmail.com",
-                Password : "",                
+                Password : "14306467AA813E1D15DB524226715344A441",                
                 To : 'plutocrat45@gmail.com',
                 From : "plutocrat45@gmail.com",
                 Subject : "Test email",

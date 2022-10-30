@@ -23,7 +23,7 @@
     $item_price = $item['price'];    
     $total_price = $item_price * $item_qty;
     
-    $sql = "INSERT INTO `order_items` (`order_id`, `product_id`, `quantity`, `price`) VALUES ('$order_id', '$item_id', '$item_qty', '$item_price')";
+    $sql = "INSERT INTO `order_items` (`order_id`, `product_id`, `quantity`, `price`, `size`, `color`) VALUES ('$order_id', '$item_id', '$item_qty', '$item_price', '', '')";
     $result = $conn->query($sql);
 
   }
