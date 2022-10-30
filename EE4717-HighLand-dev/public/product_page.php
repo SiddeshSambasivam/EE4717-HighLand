@@ -125,13 +125,7 @@
             <br>
             <h2 style = "text-align: center;margin-top: 30px; margin-bottom :20px">'.$row['title'].'</h2>';
 		
-            for($i = 0; $i < 5; $i++){
-                if($i < $row['rating']){
-                    $string .= '<span class="fa fa-star checked" style = "text-align: center"></span>';
-                }else{
-                    $string .= '<span class="fa fa-star" style = "text-align: center"></span>';
-                }
-            }
+
         $string .='</div>
 
 		<div> 
@@ -140,21 +134,23 @@
                 <br>    
 				<h2>Price S$'.$row['price'].'</h2>
 
+
 				<ul id="size">';
-                // for (size in $row['size']->fetch_assoc()){
+                $available_size = $row['size'];
+                $available_size = preg_split ("/\,/", $available_size); 
+                for ($i = 0; $i < count($available_size); $i++) {
+                    //$string .= '<div style="margin-top:50px"><a href="'.$_SERVER['PHP_SELF'].'?sizing='.$available_size[$i].'>US <br>'.$available_size[$i].'</a></div>';
+                    $string .= '<div style="margin-top:50px"><a href="'.$_SERVER['PHP_SELF'].'?item='.$row['title'].'&sizing='.$available_size[$i].'">US <br>'.$available_size[$i].'</a></div>';
+
+                }
+                // foreach ($available_size){
 					
 
 				// $products .= echo '<div><a href="services.html">US <br> 7</a></div>';
                 // }
-	$string .='<div><a href="#">US <br> 8</a></div>
-					<div><a href="#">US <br> 9</a></div>
-		
-					<div><a href="#">US 10</a></div>
-					<div><a href="#">US 11</a></div>
-					<div><a href="#">US 12</a></div>
-					<div><a href="#">US 13</a></div>
+	$string .='
 				</ul>
-
+                    
 			</div>
 		</div>
 

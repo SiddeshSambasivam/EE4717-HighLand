@@ -164,7 +164,10 @@
                         while($row = $result->fetch_assoc()) {                                    
                             $products .= '
                                 <div class="product__card">
-                                    <img class="product__card_img" src="'.$row['image'].'" alt="product image">
+                                    <a href="product_page.php?item='.$row["title"].'">
+                                
+                                    <img class="product__card_img" src="'.$row['image'].'" alt="product image"  >
+                                    </a>
                                     <div class="product__info">
                                         <a class="add_cart__btn" onclick="handleAddCart(\''.$row["title"].'\','.$row['price'].',1); callSnacker()">
                                             <span class="material-symbols-outlined">add</span>
