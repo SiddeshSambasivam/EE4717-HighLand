@@ -25,7 +25,7 @@ INSERT INTO products (title, price, description, image, items_in_stock, rating, 
 
     ("Half-sleeved winter coat",89.90,"Stay warm and fashionable with this winter coat made with premium 100% Merino Wool sourced from the highest grade Merino sheeps","../assets/product_22.jpg",30,4.5,"top","white","S,M,L","women"),
     ("Oversized Long-Sleeved Wool Shirt",32.90,"Stay warm and fashionable with this shirt made with premium 100% Merino Wool sourced from the highest grade Merino sheeps","../assets/product_23.jpg",40,3.8,"top","red","S,M,L","women"),
-    ("501 Graphic T-Shirt",19.99,"Embrace your youthful self with this graphic tee.","../assets/product_24.jpg",100 ,3.5 ,"top","S,M,L","white","women"),
+    ("501 Graphic T-Shirt",19.99,"Embrace your youthful self with this graphic tee.","../assets/product_24.jpg",100 ,3.5 ,"top","white","S,M,L","women"),
     ("Palm Tree Shirt",19.99,"Embrace your youthful self with this shirt.","../assets/product_25.jpg",100 ,3.4 ,"top","S,M,L","pink,black","men"),
     ("Strapped Tank-Top",29.90,"Be the center of attention with this white tank top made with 100% natural cotton from a sustainable source","../assets/product_26.jpg",50,4.2,"top","white","S,M,L","women"),
 
