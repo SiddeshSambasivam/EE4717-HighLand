@@ -118,24 +118,44 @@
                 ?>
             </h2>
             <?php
-              echo '<a class="product__page_btn" onclick="handleAddCart(\''.$row["title"].'\','.$row['price'].',1,\''.$row["product_id"].'\'); callSnacker()">
+             
+                
+                // $colors = explode(",", $row['size']);
+                // $sizes = explode(",", $row['color']);
+                $sizes = preg_split ("/\,/", $row['size']); 
+                $colors = preg_split ("/\,/", $row['color']); 
+
+                echo "<div style='width:40%; display:flex; flex-direction:row ;justify-content:space-around; padding: 1rem 0rem;'>Choose the color";
+                // foreach($sizes as $size){
+                //     echo '<input type="radio" id="size-product" name="size-product" value="'.$size.'">Black</input>';
+                // }
+                for ($i = 0; $i < count($sizes); $i++) {
+                    //$string .= '<div style="margin-top:50px"><a href="'.$_SERVER['PHP_SELF'].'?sizing='.$available_size[$i].'>US <br>'.$available_size[$i].'</a></div>';
+                    echo '<input type="radio" required checked="checked" id="size-product" name="size-product" class="btn__product">'.$sizes[$i].'</input>';
+
+                }
+                echo "</div>";
+                echo "<div style='width:40%; display:flex; flex-direction:row ;justify-content:space-around; padding: 1rem 0rem;'>Choose the size";
+                // foreach($colors as $color){
+                    
+                //     echo '<input type="radio" id="color-product" name="color-product" class="btn__product">'.$color.'</input>';
+                // }
+                for ($i = 0; $i < count($colors); $i++) {
+                    //$string .= '<div style="margin-top:50px"><a href="'.$_SERVER['PHP_SELF'].'?sizing='.$available_size[$i].'>US <br>'.$available_size[$i].'</a></div>';
+                    echo '<input type="radio" required checked="checked" id="color-product" name="color-product" class="btn__product">'.ucfirst($colors[$i]).'</input>';
+
+                }
+                
+                echo "</div>";
+
+                echo '<a class="product__page_btn" style="margin-top:30px; margin-bottom: 50px;" onclick="handleAddCart(\''.$row["title"].'\','.$row['price'].',1,\''.$row["product_id"].'\'); callSnacker()">
                 <span class="material-symbols-outlined">add</span>
                 Add To Cart
                 </a>';
-                
-                $colors = explode(",", $row['size']);
-                $sizes = explode(",", $row['color']);
 
-                echo "<div style='width:80%; display:flex; justify-content:space-around; padding: 1rem 0rem;'>Choose the color";
-                foreach($sizes as $size){
-                    echo '<input type="radio" id="size-product" name="size-product" value="'.$size.'">Black</input>';
-                }
-                echo "</div>";
-                echo "<div style='width:80%; display:flex; justify-content:space-around; padding: 1rem 0rem;'>Choose the size";
-                foreach($colors as $color){
-                    echo '<input type="radio" id="color-product" name="color-product" class="btn__product">'.$color.'</input>';
-                }
-                echo "</div>";
+
+
+
             ?>
     </div>
     <footer-foot></footer-foot>

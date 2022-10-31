@@ -2,7 +2,7 @@ use HighLand;
 
 INSERT INTO products (title, price, description, image, items_in_stock, rating, category, color, size, tags) VALUES 
     ("Two-toned Leather Sneaker", 59.99, "This stylish sneaker has a two-tone upper and leather lining for a look that's perfect for any outfit. ", "../assets/product_1.jpg", 100, 5, "shoes", "brown,blue", "6,7,8,9", "men"),
-    ("Pique Biker Jacket", 69.99, "A biker leather jacket with multiple pockets thats boudn to leave an impression.", "../assets/product_2.jpg", 100, 4, "clothing", "brown", "S,M,L", "men"),
+    ("Pique Biker Jacket", 69.99, "A biker leather jacket with multiple pockets thats bound to leave an impression.", "../assets/product_2.jpg", 100, 4, "clothing", "brown", "S,M,L", "men"),
     ("Black Low-Cut Sneaker",49.99,"This black sneaker is a staple in every fashionista wardrobe that complements all outfits.","../assets/product_3.jpg",100,4.2 ,"shoes","black","6,7,8,9,10","men,women"),
     ("Khaki Distressed Pullover",54.99,"Complete any outfit with this pullover thats sure to keep you warm in the winter while looking stylish.","../assets/product_4.jpg",100 ,4.4 ,"top","brown","S,M,L","men"),
     ("Monochrome Graphic T-Shirt",19.99,"Embrace your youthful self with this graphic tee.","../assets/product_5.jpg",100 ,3.9 ,"top","blue","S,M,L","men"),
