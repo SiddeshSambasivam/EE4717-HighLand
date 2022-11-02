@@ -9,13 +9,27 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
     <script src="./js/components.js"></script>
+    <style>
+        a:visited { 
+        text-decoration: none; 
+        color: black; 
+        }
+        a  { 
+        text-decoration: none; 
+        color: black; 
+        }
+    </style>
     <?php        
         
         session_start();
 
         include("../src/db_connect.php");    
 
-        $item_id = $_GET['id'];    
+        $item_id = $_GET['id'];
+        if (isset($_GET['sizing'])){
+        $sizing = $_GET['sizing'];}
+        if (isset($_GET['selected_color'])){
+        $selected_color= $_GET['selected_color'];}    
         $sql = "SELECT * FROM `products` WHERE `product_id` = '$item_id'";
         $result = $conn->query($sql);
 
@@ -120,124 +134,76 @@
             <?php
              
                 
-                // $colors = explode(",", $row['size']);
-                // $sizes = explode(",", $row['color']);
+
                 $sizes = preg_split ("/\,/", $row['size']); 
                 $colors = preg_split ("/\,/", $row['color']); 
 
-                echo "<div style='width:40%; display:flex; flex-direction:row ;justify-content:space-around; padding: 1rem 0rem;'>Choose the color";
-                // foreach($sizes as $size){
-                //     echo '<input type="radio" id="size-product" name="size-product" value="'.$size.'">Black</input>';
-                // }
+                echo "<div style=' width:40%; display:flex; flex-direction:row ;justify-content:space-around; padding: 1rem 0rem;'><p style='padding:20px;'>Step 1: Choose the size</p>";
+
                 for ($i = 0; $i < count($sizes); $i++) {
                     //$string .= '<div style="margin-top:50px"><a href="'.$_SERVER['PHP_SELF'].'?sizing='.$available_size[$i].'>US <br>'.$available_size[$i].'</a></div>';
-                    echo '<input type="radio" required checked="checked" id="size-product" name="size-product" value ="'.$sizes[$i].'" class="btn__product">'.$sizes[$i].'</input>';
-
-                }
-                echo "</div>";
-                echo "<div style='width:40%; display:flex; flex-direction:row ;justify-content:space-around; padding: 1rem 0rem;'>Choose the size";
-                // foreach($colors as $color){
+                    //echo '<input type="radio" required checked="checked" id="size-product" name="size-product" value ="'.$sizes[$i].'" class="btn__product">'.$sizes[$i].'</input>';
                     
-                //     echo '<input type="radio" id="color-product" name="color-product" class="btn__product">'.$color.'</input>';
-                // }
-                for ($i = 0; $i < count($colors); $i++) {
-                    //$string .= '<div style="margin-top:50px"><a href="'.$_SERVER['PHP_SELF'].'?sizing='.$available_size[$i].'>US <br>'.$available_size[$i].'</a></div>';
-                    echo '<input type="radio" required checked="checked" id="color-product" name="color-product" value ="'.$colors[$i].'" class="btn__product">'.ucfirst($colors[$i]).'</input>';
+                    if (isset($_GET['sizing']) && $sizing==$sizes[$i]){
+                        echo'<div style="background-color:#d4d4d4; padding:20px"><a href="'.$_SERVER['PHP_SELF'].'?id='.$item_id.'&sizing='.$sizes[$i].'"style="text-decoration: none">'.$sizes[$i].'</a></div>';
+                    }
+                    else{
+                        echo'<div style="padding:20px"><a href="'.$_SERVER['PHP_SELF'].'?id='.$item_id.'&sizing='.$sizes[$i].'"style="text-decoration: none">'.$sizes[$i].'</a></div>';
+                    }
 
+                    }
+                
+                echo "</div>";
+                echo "<div style='width:40%; display:flex; flex-direction:row ;justify-content:space-around; padding: 1rem 0rem;'><p style='padding:20px;'>Step 2: Choose the color</p>";
+
+                for ($i = 0; $i < count($colors); $i++) {
+                    if (!isset($sizing))
+                        {                 
+                            //echo '<input type="radio" required checked="checked" id="color-product" name="color-product" value ="'.$colors[$i].'" class="btn__product">'.ucfirst($colors[$i]).'</input>';
+                            echo'<div><a href="'.$_SERVER['PHP_SELF'].'?id='.$item_id.'&selected_color='.$colors[$i].'" style="text-decoration: none">'.ucfirst($colors[$i]).'</a></div>';
+                        }
+                    if (isset($sizing)){
+
+                        if (isset($_GET['selected_color']) && $selected_color == $colors[$i])
+                        {
+                            echo'<div style="background-color:#d4d4d4; padding:20px"><a href="'.$_SERVER['PHP_SELF'].'?id='.$item_id.'&sizing='.$sizing.'&selected_color='.$colors[$i].'"style="text-decoration: none">'.ucfirst($colors[$i]).'</a></div>';
+                        }
+                        else{
+                            echo'<div style="padding:20px"><a href="'.$_SERVER['PHP_SELF'].'?id='.$item_id.'&sizing='.$sizing.'&selected_color='.$colors[$i].'"style="text-decoration: none">'.ucfirst($colors[$i]).'</a></div>';
+                        }
+                        //echo '<input type="radio" required checked="checked" id="color-product" name="color-product" value ="'.$colors[$i].'" class="btn__product">'.ucfirst($colors[$i]).'</input>';
+                        //echo'<div><a href="'.$_SERVER['PHP_SELF'].'?id='.$item_id.'&sizing='.$sizing.'&selected_color='.$colors[$i].'"style="text-decoration: none">'.ucfirst($colors[$i]).'</a></div>';}
+                
                 }
+            }
+
+                    
                 
                 echo "</div>";
                 ?>
-                <!-- <script>
-                    var radios = document.querySelectorAll('input[type=radio][name="size-product"]');
 
-                    function changeHandler(event) {
-                    if ( this.value === 'S' ) {
-                        console.log('selected_size', 'S');
-                        </script>
-                        <?php $selected_size='s';?>
-                        <script>
-
-                        
-                    } else if ( this.value === 'M' ) {
-                        console.log('selected_size', 'M');
-                        </script>
-                        <?php $selected_size='M';?>
-                        <script>
-                    } 
-                    else if ( this.value === 'L' ) {
-                        console.log('selected_size', 'L');
-                        </script>
-                        <?php $selected_size='L';?>
-                        <script>
-                    }   
-                    
-                    else if ( this.value === '6' ) {
-                        console.log('selected_size', '6');
-                    }  
-                    else if ( this.value === '7' ) {
-                        console.log('selected_size', '7');
-                    }  
-                    else if ( this.value === '8' ) {
-                        console.log('selected_size', '8');
-                    }  
-                    else if ( this.value === '9' ) {
-                        console.log('selected_size', '9');
-                        
-                    }
-                }  
-                Array.prototype.forEach.call(radios, function(radio) {
-                radio.addEventListener('change', changeHandler);
-                });
-
-                    // var radios = document.querySelectorAll('input[type=radio][name="color-product"]');
-
-                    // function changeHandler(event) {
-                    // if ( this.value === 'black' ) {
-                    //     console.log('selected_size', 'black');
-                    //     <?php $selected_color = 'black';?>
-                    // } else if ( this.value === 'brown' ) {
-                    //     console.log('selected_size', 'brown');
-                    //     <?php $selected_color = 'brown';?>
-                    // } 
-                    // else if ( this.value === 'blue' ) {
-                    //     console.log('selected_size', 'blue');
-                    // }   
-                    
-                    // else if ( this.value === 'grey' ) {
-                    //     console.log('selected_size', 'grey');
-                    // }  
-                    // else if ( this.value === 'clear' ) {
-                    //     console.log('selected_size', 'clear');
-                    // }  
-                    // else if ( this.value === 'white' ) {
-                    //     console.log('selected_size', 'white');
-                    // }  
-                    // else if ( this.value === 'green' ) {
-                    //     console.log('selected_size', 'green');
-                    //     <?php $selected_color = 'green';?>
-                    // }  
-                    // else if ( this.value === 'gold' ) {
-                    //     console.log('selected_size', 'gold');
-                    //     <?php $selected_size ='gold';?>
-                    // }  
-                    // else if ( this.value === 'pink' ) {
-                    //     console.log('selected_size', 'pink');
-                    //     <?php $selected_size ='pink';?>
-                    // }  }
-
-
-                    // Array.prototype.forEach.call(radios, function(radio) {
-                    // radio.addEventListener('change', changeHandler);
-                    // });
-                </script>                 -->
                 <?php
                 // $selected_color = $_POST['color-product'];
                 // $selected_size = $_POST['size-product'];
-                echo '<a class="product__page_btn" style="margin-top:30px; margin-bottom: 50px;" onclick="handleAddCart(\''.$row["title"].'\','.$row['price'].',1,\''.$row["product_id"].'\'); callSnacker()">
+                // echo '<a class="product__page_btn" style="margin-top:30px; margin-bottom: 50px;" onclick="handleAddCart(\''.$row["title"].'\','.$row['price'].',1,\''.$row["product_id"].'\'); callSnacker()">
+                
+                if (!isset($_GET['sizing'])){
+                    echo'<a class="product__page_btn" style="margin-top:20px;margin-bottom:50px;">
+                    <span class="material-symbols-outlined">add</span>
+                    Choose your size!
+                    </a>';}
+
+                else if (!isset($_GET['selected_color'])){
+                    echo'<a class="product__page_btn" style="margin-top:20px;margin-bottom:50px;">
+                    <span class="material-symbols-outlined">add</span>
+                    Choose your color!
+                    </a>';}
+                
+                else if (isset($_GET['sizing'])&isset($_GET['selected_color'])){
+                    echo ' <a class="product__page_btn" style="margin-top:20px;margin-bottom:50px;"onclick="handleAddCart(\''.$row["title"].'\','.$row['price'].',1,\''.$row["product_id"].'\',\''.$sizing.'\',\''.$selected_color.'\'); callSnacker()">
                 <span class="material-symbols-outlined">add</span>
                 Add To Cart
-                </a>';
+                </a>';}
 
 
 

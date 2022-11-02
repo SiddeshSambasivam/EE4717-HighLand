@@ -8,7 +8,17 @@ function handleAddCart(product, price, qty, id, size, color){
         cart = [];
     }
 
-    let productInCart = cart.find(item => item.product == product);    
+
+    
+
+    let productInCart = cart.find(item => item.product == product);
+
+
+
+
+
+
+
     let index = cart.indexOf(productInCart);
 
 

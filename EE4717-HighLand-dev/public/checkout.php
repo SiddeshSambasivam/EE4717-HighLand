@@ -41,7 +41,8 @@
     </script>
 
     <?php
-        session_start();    
+        session_start();
+        include("../src/db_connect.php");
         
     ?>
 
@@ -88,12 +89,13 @@
                     console.log(message);
                     // send email to plutocrat45@gmail.com                    
                     // sendEmail(message);   
-                    sessionStorage.removeItem("cart");
-                    window.location.href = "thank-you.php";                 
+               
                 }
             });
 
 
+            // uncomment these lines to remove cart without sending email
+            sessionStorage.removeItem("cart");
             window.location.href = "thank-you.php";
         }
 

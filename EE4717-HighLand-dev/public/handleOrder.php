@@ -21,8 +21,6 @@
     $item_id = $item['id'];
     $item_qty = $item['qty'];
     $item_price = $item['price'];
-
-
     $item_size = $item['size'];
     $item_color = $item['color'];
 
@@ -32,7 +30,17 @@
     $sql = "INSERT INTO `order_items` (`order_id`, `product_id`, `quantity`, `price`, `size`, `color`) VALUES ('$order_id', '$item_id', '$item_qty', '$item_price', '$item_size', '$item_color')";
     $result = $conn->query($sql);
 
+
+    //$sql = "UPDATE 'products' SET 'items_in_stock' = items_in_stock - 1 WHERE 'product_id' = '$item_id'";
+    $sql = "UPDATE products SET items_in_stock = items_in_stock -$item_qty WHERE product_id = $item_id";
+
+
+    $result = $conn->query($sql);
+
   }
+
+
+
   
   echo $order_id;
 ?>
