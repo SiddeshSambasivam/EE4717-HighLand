@@ -62,6 +62,8 @@ CREATE TABLE order_items (
     order_id INT NOT NULL,
     product_id INT NOT NULL,
     quantity INT NOT NULL,
+    size VARCHAR(255) NOT NULL,
+    color VARCHAR(255) NOT NULL,
     price DECIMAL(10,2) NOT NULL,
     PRIMARY KEY (order_id, product_id),
     FOREIGN KEY (order_id) REFERENCES orders(order_id),
