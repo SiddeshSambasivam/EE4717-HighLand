@@ -1,7 +1,7 @@
 /* Login Table */
 
 .auth__container {
-    padding: 3rem 18% 0rem 18%;
+    padding: 0rem 18% 0rem 18%;
     display: flex;
     justify-content: center;
 
@@ -192,12 +192,12 @@ input {
 
 footer {
     margin-top: 2rem;
-    bottom: 0;
-    position: fixed;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 999;
+    /* bottom: 0; */
+    /* position: fixed; */
+    /* left: 0; */
+    /* right: 0; */
+    /* text-align: center; */
+    /* z-index: 999; */
 }
 
 /* User profile */

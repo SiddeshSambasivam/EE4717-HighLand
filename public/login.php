@@ -140,7 +140,7 @@
             <div class="header__top_right_cta">
                 <?php 
                     if(isset($_SESSION['user_id'])){
-                        echo "<span>Welcome ".$_SESSION['name']."!</span>";
+                        echo "<span>Welcome ".$_SESSION['name']."!</span>";                        
                         echo "<a href='logout.php'>Logout</a>";
                     }else{
                         echo '<a href="./login.php">Sign up</a>
@@ -186,7 +186,8 @@
         <?php
             if (isset($_SESSION['user_id']))
             {
-                echo '<div class="user__profile"><h1> You are logged in as: '. $_SESSION['name'] . '</h1>';
+                echo '<div class="user__profile"><h1>Hey '. $_SESSION['name'] . '!</h1>';                                                
+                echo "<div id='user-content'><h2>My Orders</h2></div>";
                 echo '<button onclick="handleLogout()">Log out</button></div>';
             }
             else
@@ -243,6 +244,83 @@
         ?>        
     </div>
     <footer-foot></footer-foot>
+    <script>
+        // check if user-content id exists
+        
+        if(document.getElementById("user-content")){
+
+            let user_id = sessionStorage.getItem("user_id");            
+            $.ajax({
+                url: "./handleGetOrders.php",
+                type: "POST",
+                data: {user_id: user_id},
+                success: function(data){
+                    let orders = JSON.parse(data);
+                    console.log(orders);
+                    // table for the orders
+                    let table = document.createElement("table");
+                    table.setAttribute("class", "user__orders");
+                    let thead = document.createElement("thead");
+                    let tr = document.createElement("tr");
+                    let th = document.createElement("th");
+                    th.innerHTML = "Order ID";
+                    tr.appendChild(th);
+                    th = document.createElement("th");
+                    th.innerHTML = "Order Date";
+                    tr.appendChild(th);
+                    th = document.createElement("th");
+                    th.innerHTML = "Order Status";
+                    tr.appendChild(th);
+                    th = document.createElement("th");
+                    th.innerHTML = "Order Total";
+                    tr.appendChild(th);
+                    thead.appendChild(tr);
+                    table.appendChild(thead);
+                    let tbody = document.createElement("tbody");
+                    for(let i = 0; i < orders.length; i++){
+                        tr = document.createElement("tr");
+                        let td = document.createElement("td");
+                        td.innerHTML = orders[i].order_id;
+                        tr.appendChild(td);
+                        td = document.createElement("td");
+                        td.innerHTML = orders[i].order_date;
+                        tr.appendChild(td);
+                        td = document.createElement("td");
+                        // map order status to a string
+                        let status = "";
+                        switch(orders[i].status){
+                            case "0":
+                                status = "Processing";
+                                break;
+                            case "1":
+                                status = "Shipped";
+                                break;
+                            case "2":
+                                status = "Delivered";                                
+                                break;
+                            case "3":
+                                status = "Cancelled";
+                                break;
+                            default:
+                                status = "Unknown";
+                                break;
+                        }
+                        td.innerHTML = status;                        
+                        tr.appendChild(td);
+                        td = document.createElement("td");
+                        td.innerHTML = "S$ "+orders[i].total_price;
+                        tr.appendChild(td);
+                        tbody.appendChild(tr);
+                    }
+
+                    table.appendChild(tbody);
+                    document.getElementById("user-content").appendChild(table);
+                    // document.getElementById("user-content").innerHTML = `
+
+                    // `
+                }});
+        }
+    </script>    
     <script src="./js/login.js"></script>
     <script src="./js/notif.js"></script>
 </body>

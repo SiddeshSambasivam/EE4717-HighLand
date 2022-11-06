@@ -776,3 +776,31 @@ body {
     background-color: #a7a5a5;
     color: #fff;
 }
+
+#user-content {
+    min-width: 600px;
+    padding-bottom: 2rem;
+}
+
+.user__orders {
+    width: 100%;
+}
+
+.user__profile h1 {
+    text-align: center;
+}
+
+#user-content h2 {
+    text-align: center;
+    padding: 1rem 0rem 1.8rem 0rem;
+}
+
+.user__orders th {
+    border-bottom: 1.5px solid var(--grey);
+    padding-bottom: 0.7rem;
+}
+
+.user__orders td {
+    padding: 0.5rem;
+    text-align: center;
+}

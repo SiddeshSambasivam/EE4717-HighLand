@@ -25,15 +25,7 @@
                 Subject : "Order Summary from HighLand",
                 Body : message                
             }).then(
-
-
-                //decrease stock by 1 in database
-
-
-                //update transaction table
-
-
-                message => {                    
+                (message) => {                                        
                     sessionStorage.removeItem("cart");
                     window.location.href = "thank-you.php";
                 });
@@ -85,18 +77,20 @@
                 success: function(data){
                     // console.log(data);
 
-                    var message = "Thank you for your order! Your order number is " + data + ".";
+                    // get the summary table and send it to the email
+                    let message = "Hey there! Thank you placing an order at HighLand. This is to confirm the order and the details are as follows: <br/><br/>"+ document.getElementById("summary").innerHTML;
+
+                    message += "Thank you for your order! Your order number is " + data + ".";
                     console.log(message);
                     // send email to plutocrat45@gmail.com                    
-                    // sendEmail(message);   
+                    sendEmail(message);   
                
                 }
             });
 
-
             // uncomment these lines to remove cart without sending email
-            sessionStorage.removeItem("cart");
-            window.location.href = "thank-you.php";
+            // sessionStorage.removeItem("cart");
+            // window.location.href = "thank-you.php";
         }
 
         function precise(x) {
